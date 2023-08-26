@@ -167,13 +167,13 @@
 
 
       const submit_booking = () => {
-         // const subjectt = document.getElementById("subject").value
+
          var level = document.getElementById("level").value
          var time = document.getElementById("time").value
          const date = document.getElementById("date").value
-         const duration = document.getElementById("duration").value
+
          const location = document.getElementById("location").value
-         // const price = document.getElementById("price").value
+
          const updates = {};
          function tConvert(timee) {
             // Check correct time format and split into components
@@ -189,7 +189,7 @@
 
          console.log(time)
          console.log(date)
-         console.log(duration)
+
          const db = getDatabase();
          var randomid = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
          console.log(randomid)
@@ -216,7 +216,7 @@
             // "subject": subjectt,
             "date": date,
             "time": tConvert(time),
-            "duration": duration,
+
             "uid": uid,
             "img": tutorimg,
             "location": location,
@@ -270,13 +270,7 @@
          </div>
 
          <div>
-            <label for="customRange1" class="form-label">Duration:</label>
-            <input type="range" class="form-range" value="1" min="0" max="3" step="0.5"
-               oninput="this.nextElementSibling.value = this.value" id="duration"><output>1</output> Hour <br>
-         </div>
-
-         <div>
-            <br>Date of First Lesson:<br>
+            <br>Preferred Start Date<br>
             <input type="date" class="form-control" id="date">
             Time:<br>
             <input type="time" class="form-control" id="time">
