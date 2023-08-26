@@ -133,14 +133,19 @@
                         Industry
                         </a>
                         <ul class="dropdown-menu" id="eduLvlDropDown" aria-labelledby="eduLvlDropDown">
-                        <li class="dropdown-item"  onclick="getSubj(1)">Primary School</li>
-                        <li class="dropdown-item"  onclick="getSubj(2)">Secondary School</li>
-                        <li class="dropdown-item"  onclick="getSubj(3)">Junior College</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Information Tech</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Engineering</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Energy</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Automotives</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Healthcare</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Finance</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Human Resources</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Real Estate</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Marketing</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Media</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Hospitality</li>
+
                         </ul>
-                    </li>
-                    
-                    <li class="nav-item me-3">
-                        <a class="nav-link" aria-current="page" href="#" onclick="getSubj(1)">Industry</a>
                     </li>
                     <li class="nav-item my-auto">
                         <i class="fa-solid fa-magnifying-glass my-auto" style="color: #000000;"></i>
@@ -206,7 +211,248 @@
             <div class = "row">
                 <div class="col mx-auto">
                 <div id="homepage-shown">
+                    <div class="container-fluid">
+                        <div class="row">
+                        <!-- First Card -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Isabella Tan", "Software Developer", "Orchard", "https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2023/06/person-at-computer.jpeg.jpg", "https://blog-pixomatic.s3.appcnt.com/image/22/01/26/61f166e07f452/_orig/pixomatic_1572877263963.png")'>
+                            <img src="https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2023/06/person-at-computer.jpeg.jpg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://blog-pixomatic.s3.appcnt.com/image/22/01/26/61f166e07f452/_orig/pixomatic_1572877263963.png" alt="Isabella Tan" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Software Developer</p>
+                                    <p style="margin: 0px;" id="name">Isabella Tan</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Orchard</span>
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- Second Card -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage(2)">
+                            <img src="https://s40424.pcdn.co/in/wp-content/uploads/2022/07/content-marketing.jpg.optimal.jpg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://artriva.com/media/k2/items/cache/c889234799e865bbe90cee71f6cd2e53_XL.jpg" alt="Ethan Lim" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Marketing Manager</p>
+                                    <p style="margin: 0px;" id="name">Ethan Lim</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Chinatown</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Third Card -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage(3)">
+                            <img src="https://cdn.logojoy.com/wp-content/uploads/20200612115158/AdobeStock_88222430-1-min-scaled.jpeg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://wallpapers.com/images/hd/professional-profile-pictures-dgevd7f8cc177lzv.jpg" alt="Olivia Ng" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Graphic Designer</p>
+                                    <p style="margin: 0px;" id="name">Olivia Ng</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Bugis</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fourth Card -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage(4)">
+                            <img src="https://www.wealthandfinance-news.com/wp-content/uploads/2021/07/Finance-technology.jpg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://wallpapers.com/images/hd/professional-profile-pictures-2880-x-1920-xq8yol0nn3qfm0w4.jpg" alt="Liam Tan" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Financial Analyst</p>
+                                    <p style="margin: 0px;" id="name">Liam Tan</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Raffles Place</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fifth Card -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage(5)">
+                            <img src="https://assets.aboutamazon.com/21/d3/171c031b4871a367060f2b974a59/health-hero-1.jpg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://i.pinimg.com/originals/77/71/68/7771683223d86b237a3304d6f32828b9.jpg" alt="Sophia Lim" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Healthcare Professional</p>
+                                    <p style="margin: 0px;" id="name">Sophia Lim</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Novena</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 6 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage(6)">
+                            <img src="https://www.springboard.com/blog/wp-content/uploads/2021/05/useful-data-analysis-methods-to-use-on-your-next-project-scaled.jpeg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://images.unsplash.com/photo-1544504942-5b5e16275050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fHw%3D&w=1000&q=80" alt="Placeholder Profile Image" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Data Analyst</p>
+                                    <p style="margin: 0px;" id="name">Sophie Lee</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Bedok</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 7 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage(7)">
+                            <img src="https://s40424.pcdn.co/in/wp-content/uploads/2022/07/content-marketing.jpg.optimal.jpg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://i.pinimg.com/originals/fa/be/61/fabe61b03be64af9d7deefbb59ddb278.jpg" alt="Placeholder Profile Image" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Marketing Specialist</p>
+                                    <p style="margin: 0px;" id="name">Lucas Tan</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Tampines</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 8 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage(8)">
+                            <img src="https://www.mindinventory.com/blog/wp-content/uploads/2023/05/mobile-ux-design-best-practices.webp" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://media.istockphoto.com/id/942166754/photo/portrait-of-handsome-asian-man-smiling.jpg?s=612x612&w=0&k=20&c=qOl1v5lZb_UrHrUOKJ_vOFvfS9McrijC9c75QYryqvw=" alt="Placeholder Profile Image" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">UX Designer</p>
+                                    <p style="margin: 0px;" id="name">Aiden Lim</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Clementi</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 9 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage(9)">
+                            <img src="https://uploads-ssl.webflow.com/62e95dddfb380a0e61193e7d/634970c7cbeed5644711b937_62fd57ccd6890f25796f92f9_AdobeStock_295461823.jpeg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://as2.ftcdn.net/v2/jpg/03/86/24/79/1000_F_386247946_09aJRdK2ovnN4oETADZKPQwZ4CGlMuoD.jpg" alt="Placeholder Profile Image" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Software Engineer</p>
+                                    <p style="margin: 0px;" id="name">Ella Tan</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Woodlands</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 10 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage(10)">
+                            <img src="https://s40424.pcdn.co/in/wp-content/uploads/2022/03/What-is-Financial-Management.jpg.optimal.jpg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://1.bp.blogspot.com/-sEU_IAX341A/XM-_ihNliwI/AAAAAAAAhfk/4IISxHRhRjky22dYMXAfASHpP8e67_7bwCLcBGAs/s1600/Asian%2BBusiness%2BHeadshots%2B7.jpg" alt="Placeholder Profile Image" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Financial Advisor</p>
+                                    <p style="margin: 0px;" id="name">Zachary Lim</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Bukit Timah</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 11 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage(11)">
+                            <img src="https://resilienteducator.com/wp-content/uploads/2014/11/math-teacher.jpg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://media.istockphoto.com/id/1318327528/photo/charming-asian-businesswoman-working-with-a-laptop-at-the-office-looking-at-camera.webp?b=1&s=170667a&w=0&k=20&c=CCy-cR75BRr9RnPcFL4ODOTJr6GpBZnPwoZDImPaA_Y=" alt="Placeholder Profile Image" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Teacher</p>
+                                    <p style="margin: 0px;" id="name">Emma Wong</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Ang Mo Kio</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 12 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage(12)">
+                            <img src="https://www.franklin.edu/sites/default/files/styles/btcb_photo/public/fr/back%20to%20college%20blog/main%20images/iStock-983321926.jpg?itok=usJ_HhgI" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://atd-blogs.s3.us-east-2.amazonaws.com/wp-content/uploads/2022/04/16142821/cool-profile-pictures-for-girls-9.webp" alt="Placeholder Profile Image" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Accountant</p>
+                                    <p style="margin: 0px;" id="name">Daniel Ng</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Jurong East</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 13 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage(13)">
+                            <img src="https://media.istockphoto.com/id/1063723682/photo/hand-sketching-a-designer-villa-with-pool.jpg?s=612x612&w=0&k=20&c=SlIacvwSEEsZ-2imWLDk6dC0glhaWEg-pOGFSK4YQuI=" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://www.whiteroomstudio.com.sg/wordpress/wp-content/uploads/2021/09/SamanthaDing_002-1024x683.jpeg" alt="Placeholder Profile Image" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Architect</p>
+                                    <p style="margin: 0px;" id="name">Lily Tan</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Marina Bay</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 14 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage(14)">
+                            <img src="https://cdn.majorel.com/wp-content/uploads/2019/12/09131220/majorel-consulting-team-scaled-5.jpeg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://media.istockphoto.com/id/614315942/photo/portrait-of-asian-chinese-businessman.jpg?s=612x612&w=0&k=20&c=pothieEuIAio8P7GZcAdVMZ2jQUqupBAZy4q8oFrQ-c=" alt="Placeholder Profile Image" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Consultant</p>
+                                    <p style="margin: 0px;" id="name">Matthew Lim</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Hougang</span>
+                                </div>
+                            </div>
+                        </div>
+
+                                <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage(1)">
+                                    <img src="https://online.norwich.edu/sites/default/files/styles/resource_standard_hero/public/content/resources/header/201.jpg?itok=1NslraSU" alt="Avatar" class="img-display">
+                                    <div class="row">
+                                    <div class="col-4" style="padding-right:0px">
+                                        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Generic placeholder image" class="img-fluid img-thumbnail">
+                                    </div>
+                                    <div class="col-8 information py-2" style="padding-left:0px">
+                                        <p style="font-weight: bold; margin: 0px;">Chemical Engineer</p>
+                                        <p style="margin: 0px;">Josiah Edwards
+                                        </p>
+                                        <p style="font-size: 15px;" ><span class="fa-solid fa-location-dot" style="color: #000000;"></span> 
+                                        <span style="font-size: 15px; margin: 0px;">Jurong</span>
+                                        
+                                    </div>
+                                    </div>
+                                    </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             </div>
@@ -220,6 +466,28 @@
                 </div>
             </div>
     </div>
+
+    <script>
+        function goProfilePage(name, occupation, location,industryImage, profileImage,) {
+            // Prepare data to send
+            const data = {
+                name: name,
+                occupation: occupation,
+                location: location,
+                industryImage: industryImage,
+                profileImage: profileImage
+            };
+
+            // Convert data to JSON and encode for URL
+            const dataEncoded = encodeURIComponent(JSON.stringify(data));
+
+            // Create the URL with parameters
+            const profileURL = `profile.html?data=${dataEncoded}`;
+
+            // Redirect to profile.html
+            window.location.href = profileURL;
+        }
+    </script>
 
 <!-- Weather API -->
 <script>
