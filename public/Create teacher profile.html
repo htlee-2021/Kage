@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- icon -->
+   <link rel="icon" href="style/favicon.ico">
+
+  <!-- external style sheet -->
+  <link href='../style/style.css' rel='stylesheet'>
+
+  <!-- Icons -->
+  <script src="https://kit.fontawesome.com/a5bb4f9226.js" crossorigin="anonymous"></script>
+
+  <title>Create Tutor Profile</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js";
+    import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js";
+    import { getDatabase, ref, set, child, push, update } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
+
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDc714DoZoHSdClJoOi3K95Ho-4nPH4fZY",
+      authDomain: "tutizen-c8f64.firebaseapp.com",
+      databaseURL: "https://tutizen-c8f64-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "tutizen-c8f64",
+      storageBucket: "tutizen-c8f64.appspot.com",
+      messagingSenderId: "210404368356",
+      appId: "1:210404368356:web:c8d68acf2541de5ab9b1f1"
+    };
+    const appp = initializeApp(firebaseConfig);
+    // Initialize Firebase Authentication and get a reference to the service
+    const analytics = getAnalytics(appp);
+    const auth = getAuth();
+    const database = getDatabase();
+    const user = auth.currentUser;
+
+    //reference to database
+
+    const signup = document.getElementById("create");
+
+    const create = () => {
+      const email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var name = document.getElementById("name").value;
+      var price = Number(document.getElementById("price").value);
+      var increment = Number(document.getElementById("increment").value);
+      var station = document.getElementById("station").value;
+      var line = document.getElementById("line").value;
+      var lvlpri = document.querySelectorAll(".lvlPri:checked");
+      var lvlsec = document.querySelectorAll(".lvlSec:checked");
+      var lvlJC = document.querySelectorAll(".lvlJC:checked");
+      var offerings = document.querySelectorAll(".offerings:checked");
+      var offering = {};
+      var count = 0
+      var subject = {}
+      var priObject = {}
+      var secObject = {}
+      var jcObject = {}
+      var priTemp = {}
+      var secTemp = {}
+      var jcTemp = {}
+      // console.log(lvlpri)
+      for (var I = 0; I < offerings.length; I++) {
+        offering[I] = offerings[I].value
+      }
+      // console.log(offering)
+      for (var i = 0; i < lvlpri.length; i++) {
+        priTemp[`${lvlpri[i].value}`] = "Primary 6"
+      }
+      for (var i = 0; i < lvlsec.length; i++) {
+        secTemp[`${lvlsec[i].value}`] = "Secondary 4"
+      }
+      for (var i = 0; i < lvlJC.length; i++) {
+        if(lvlJC[i].value == "General Paper"){
+          jcTemp[`${lvlJC[i].value}`] = "H1"
+        }
+        else{
+          jcTemp[`${lvlJC[i].value}`] = "H2"
+        }
+      }
+      if (Object.keys(priTemp).length != 0) {
+        subject["Primary School"] = priTemp
+      }
+      if (Object.keys(secTemp).length != 0) {
+        subject["Secondary School"] = secTemp
+      }
+      if (Object.keys(jcTemp).length != 0) {
+        subject["Tertiary"] = jcTemp
+      }
+      console.log(priObject)
+
+      if (name == "") {
+        document.getElementById("namemessage").innerHTML = "**Fill your name please!";
+        return false;
+      }
+
+      if (email == "") {
+        document.getElementById("emailmessage").innerHTML = "**Fill your email please!";
+        return false;
+      }
+
+      if (password == "") {
+        document.getElementById("message").innerHTML = "**Fill the password please!";
+        return false;
+      }
+
+      //minimum password length validation  
+      if (password.length < 8) {
+        document.getElementById("message").innerHTML = "**Password length must be atleast 8 characters";
+        return false;
+      }
+
+      //maximum length of password validation  
+      if (password.length > 15) {
+        document.getElementById("message").innerHTML = "**Password length must not exceed 15 characters";
+        return false;
+      } else {
+        createUserWithEmailAndPassword(auth, email, password)
+
+          .then((userCredential) => {
+            // Signed in 
+            // console.log(userCredential)
+            const user = userCredential.user;
+
+            console.log(user)
+            const db = getDatabase();
+            var userid_change = user.uid
+            set(ref(db, 'tutor/' + userid_change), {
+              info: { "img": "img/user.jpeg", "increment": increment, "mrt": station, "name": name, offering, "price": price },
+              quality: { "Effective": 0, "Patient": 0, "Caring": 0, "Engaging": 0, "Helpful": 0, "Competent": 0 },
+              review: { 0: "" },
+              subject,
+
+              // level: education
+            });
+            var tutorinfo = { "uid": userid_change, "name": name, "location": station }
+            localStorage.setItem("tutorinfo", JSON.stringify(tutorinfo))
+            setTimeout(() => {
+              if (user) {
+                window.location.href = 'Homepage.html'; //After successful login, user will be redirected to home.html
+              }
+
+            }, 100)
+
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert("This email has been registered")
+            // ..
+          });
+
+
+
+      }
+    }
+
+    signup.addEventListener('click', create);
+    const getOut = document.getElementById("cancel")
+    const goHome = () => {
+      setTimeout(() => {
+        const usersession = JSON.parse(localStorage.getItem('userinfo'))
+        if (usersession !== null) {
+          window.location.href = "Homepage.html"
+        } else {
+          window.location.href = "index.html"
+        }
+      }, 100)
+
+    }
+    getOut.addEventListener('click', goHome)
+  </script>
+  <style>
+    .bg_img {
+      height: 120px;
+      width: 100%;
+      padding: 10px;
+    }
+
+    .has-bg {
+      background-image: url("img/Background.png");
+    }
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 30px;
+      padding: 30px;
+    }
+
+    .form-control,
+    .form-select {
+      border-radius: 30px;
+      padding: 5px 15px;
+      margin-left: 16px;
+    }
+
+    hr {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      border-radius: 20px;
+      padding: 5px 15px;
+      min-width: 100px;
+      text-align: center;
+      margin: 0px;
+    }
+
+    .btn:hover {
+      background-color: #fa7979;
+      border-color: #fa7979;
+    }
+
+    .btn:active {
+      background-color: #fa7979;
+      border-color: #fa7979;
+    }
+
+    p {
+      margin: 0px;
+    }
+  </style>
+</head>
+
+<body style="background-color: #Ffffff;" class='has-bg'>
+  <div class="row justify-content-center">
+    <div class="col">
+      <img src="img/background_img.png" class="bg_img" alt="">
+    </div>
+  </div>
+  <div class="container d-flex justify-content-center py-5" id="app">
+    <div class="col-lg-8">
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h1 style="text-align: center;">Create Tutor Account</h1>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0"><span style="color:red">* </span>Full Name</p><span id="namemessage" style="color:red"> </span>
+            </div>
+            <div class="col-sm-9">
+              <input id="name" type="text" class="form-control"
+                placeholder="Full name (as per NRIC/Passport) ">
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0"><span style="color:red">* </span>Email</p><span id="emailmessage" style="color:red"> </span>
+            </div>
+            <div class="col-sm-9">
+              <input id="email" type="text" class="form-control" placeholder="Email">
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0"><span style="color:red">* </span>Password</p><span id="message" style="color:red"> </span>
+            </div>
+            <div class="col-sm-9">
+              <input type="password" id="password" class="form-control"
+                placeholder="Password should have more than 8 characters" />
+            </div>
+          </div>
+
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0"><span style="color:red">* </span>Price</p><span id="mobilemessage" style="color:red"> </span>
+            </div>
+            <div class="col-sm-9">
+              <input type="number" class="form-control" id="price"
+                placeholder="Price of your service for the lowest level you teach">
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Increment</p><span id="mobilemessage" style="color:red"> </span>
+            </div>
+            <div class="col-sm-9">
+              <input type="number" class="form-control" id="increment"
+                placeholder="Price increment for each level you teach">
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0"><span style="color:red">* </span>Closest MRT Line</p>
+            </div>
+            <div class="col-sm-9">
+              <select class="form-select" v-model="area" id="line" placeholder="Select your closest MRT line...">
+                <option disabled selected hidden>Select</option>
+                <option v-for="area in areas">{{area}}</option>
+              </select>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0"><span style="color:red">* </span>Closest MRT Station</p>
+            </div>
+            <div class="col-sm-9">
+              <select class="form-select" id="station">
+                <option disabled selected hidden>Select</option>
+                <option v-for="station in northsouth" v-if="area=='North South'">{{station}}</option>
+                <option v-for="station in northeast" v-if="area=='North East'">{{station}}</option>
+                <option v-for="station in circle" v-if="area=='Circle'">{{station}}</option>
+                <option v-for="station in downtown" v-if="area=='Downtown'">{{station}}</option>
+                <option v-for="station in eastwest" v-if="area=='East West'">{{station}}</option>
+                <option v-for="station in thomsoneast" v-if="area=='Thomson Eastcoast'">{{station}}</option>
+              </select>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Offerings</p>
+            </div>
+            <div class="col-sm-9">
+              <div class="dropdown">
+                <p>
+                  <button class="btn btn-outline-dark col col-lg-3 col-sm-12 mx-3" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#offerings" aria-expanded="false"
+                    aria-controls="multiCollapseExample1">Offerings</button>
+                </p>
+                <div class="row">
+                  <div class="col">
+                    <div class="collapse multi-collapse" id="offerings">
+                      <br>
+                      <div class="card card-body ">
+                        
+                        <div>
+
+                          <span v-for="offering in offerings"><input type="checkbox" class="offerings"
+                              v-bind:value="offering">
+                            {{offering}}<br></span>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Subjects</p>
+            </div>
+            <div class="col-sm-9">
+              <div class="dropdown">
+                <p>
+                  <button class="btn btn-outline-dark col col-lg-3 col-sm-12 mx-3" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#primary" aria-expanded="false"
+                    aria-controls="multiCollapseExample1">Primary</button>
+                  <button class="btn btn-outline-dark col col-lg-3 col-sm-12 mx-3" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#secondary" aria-expanded="false"
+                    aria-controls="multiCollapseExample2">Secondary</button>
+                  <button class="btn btn-outline-dark col col-lg-3 col-sm-12 mx-3" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#juniorcollege" aria-expanded="false"
+                    aria-controls="multiCollapseExample3">Junior College</button>
+                </p>
+                <div class="row">
+                  <div class="col">
+                    <div class="collapse multi-collapse" id="primary">
+                      <br>
+                      <div class="card card-body ">
+                        <div>
+                            <li v-for="subject in pri_subjects" style="list-style: none;"><input type="checkbox" class="lvlPri"
+                                v-bind:value="subject">
+                              {{subject}}</li>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="collapse multi-collapse" id="secondary">
+                      <br>
+                      <div class="card card-body">
+                        <div>
+                            <li v-for="subject in sec_subjects" style="list-style: none;"><input type="checkbox" class="lvlSec"
+                                v-bind:value="subject">
+                              {{subject}}</li>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="collapse multi-collapse" id="juniorcollege">
+                      <br>
+                      <div class="card card-body">
+                        <div>
+                            <li v-for="subject in jc_subjects" style="list-style: none;"><input type="checkbox" class="lvlJC"
+                                v-bind:value="subject">
+                              {{subject}}</li>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <hr>
+          <button type="submit" class="btn btn-outline-dark mx-1" id="create">Sign Up</button>
+          <button type="submit" class="btn btn-outline-dark mx-1" id="cancel">Cancel</button>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+  const app = Vue.createApp(
+    {
+      //options object
+      data() {
+        return {
+          areas: ['North South', 'East West', 'North East', 'Circle', 'Downtown', 'Thomson Eastcoast'],
+          northsouth: ['Jurong East', 'Bukit Batok', 'Bukit Gombak', 'Choa Chu Kang',
+            'Yew Tee', 'Kranji', 'Marsiling', 'Woodlands', 'Admiralty', 'Sembawang',
+            'Canberra', 'Yishun', 'Khatib', 'Yio Chu Kang', 'Ang Mo Kio', 'Bishan',
+            'Braddell', 'Toa Payoh', 'Novena', 'Newton', 'Orchard', 'Somerset', 'Dhouby Ghaut',
+            'City Hall', 'Raffles Place', 'Marina Bay', 'Marina South Pier'],
+          eastwest: ["Pasir Ris", "Tampines", "Simei", "Tanah Merah", "Bedok", "Kembangan", "Eunos", "Paya Lebar",
+            "Aljunied,Kallang", "Lavender", "Bugis", "Tanjong Pagar", "Tiong Bahru", "Redhill", "Queenstown",
+            "Commonwealth", "Buona Vista", "Dover", "Clementi", "Chinese Garden", "Lakeside", "Boon Lay",
+            "Pioneer", "Joo Koon", "Gul Circle", "Tuas Crescent"],
+          northeast: ["HarbourFront", "Outram Park", "Chinatown", "Clarke Quay", "Farrer Park",
+            "Boon Keng", "Potong Pasir", "Woodleigh", "Serangoon", "Kovan", "Hougang", "Buangkok", "Sengkang", "Punggol"],
+          circle: ["Bras Basah", "Esplanade", "Nicoll Highway", "Stadium", "Mountbatten", "Dakota", "Tai Seng", "Bartley", "Lorong Chuan",
+            "Marymount", "Caldecott", "Farrer Road", "Holland Village", "one-north", "Kent Ridge", "Haw Par Villa", "Pasir Panjang",
+            "Labrador Park", "Telok Blangah"],
+          downtown: ["Bukit Panjang", "Cashew", "Hillview", "Beauty World", "King Albert Park", "Sixth Avenue", "Tan Kah Kee",
+            "Botanic Gardens", "Stevens", "Newton", "Little India", "Rochor", "Bugis", "Downtown", "Telok Ayer", "Fort Canning",
+            "Bencoolen", "Jalan Besar", "Bendemeer", "Geylang Bahru", "Mattar", "MacPherson", "Ubi", "Kaki Bukit", "Bedok North",
+            "Bedok Reservoir", "Tampines West", "Tampines", "Tampines East", "Upper Changi", "Expo"],
+          thomsoneast: ["Woodlands North", "Woodlands South"],
+          primary: ["Primary 1", "Primary 2", "Primary 3", "Primary 4", "Primary 5", "Primary 6",
+            "Secondary 1", "Secondary 2", "Secondary 3", "Secondary 4", "JC1", "JC2"],
+          secondary: ["Secondary 1", "Secondary 2", "Secondary 3", "Secondary 4"],
+          junior: ["JC1", "JC2"],
+          area: "",
+          levels: [],
+          offerings: ["Topical worksheet",
+            "Concise notes",
+            "Personalised exam work schedule",
+            "Study tips",
+            "Self-prepared exam papers",
+            "Personalised feedback",
+            "Responsive text",
+            "Flexible tuition timings",
+            "Review of past year papers",
+            "Personal answers to TYS",
+            "Easy to contact",
+            "Crash course before exam",
+            "Personal 1-1 tuition",
+            "Small group tuition",
+            "Affordable rates",
+            "Home-based tuition"],
+          pri_subjects: ['English', 'Math', 'Science', 'Chinese'],
+          sec_subjects: ['English', 'E Math',  'A Math','Chinese', 'Physics', 'Chemistry', 'Biology', 'Geography',
+            'Literature', 'Social Studies', 'History', 'POA', 'Higher Chinese'],
+          jc_level: ['H1', 'H2', 'H3'],
+          jc_subjects: ['General Paper', 'Math', 'Chinese', 'Physics', 'Chemistry', 'Biology', 'Geography',
+            'Literature', 'Social Studies', 'History', 'Econs']
+
+        }
+      },
+      methods: {
+        getFullName() {
+          console.log('in method')
+          let fullname = this.firstName + this.lastName
+          return fullname
+        }
+      },
+    }
+  )
+
+  const mount = app.mount("#app")
+</script>
+
+</html>

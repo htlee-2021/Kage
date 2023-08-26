@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <!-- icon -->
+    <link rel="icon" href="style/favicon.ico">
+
+    <!-- external style sheet -->
+    <link href='style/style.css' rel='stylesheet'>
+
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/a5bb4f9226.js" crossorigin="anonymous"></script>
+
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <style>
+        
+    /*style for box of col-9*/
+    .container-fluid .row .homepage {
+        background: #FFF;
+        padding: 10px 20px;
+        text-align: left;
+        margin-bottom: 25px;
+
+    }
+
+        
+    /*style for card of individual tutor profile*/
+    .card {
+      background: #FFF;
+      border-color: #FFF;
+      transition: 0.3s;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      margin-left: 6px;
+      margin-right: 6px;
+      min-height: 300px;
+      text-align: left;
+      width: 328px
+    }
+
+    /*style for card of individual tutor profile when hover to click*/
+    .card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+    .container-fluid .row .homepage .row .card .information {
+      text-align: left;
+      font-family: 'Open Sans';
+      font-size: 19px ;
+    }
+
+    .container-fluid .row .homepage .row .card .information p {
+      font-family: 'Open Sans';
+      font-size: 19px ;
+    }
+
+
+
+    /*
+    .container-fluid .row .like-page .row .card {
+        background: #FFF;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        padding: 150px 20px;
+        text-align: left;
+        margin: 20px 10px;
+    }*/
+    
+
+    .img-thumbnail {
+      border-radius:50%;
+      width:80px;
+      height:80px;
+      margin:10px 10px;
+      object-fit: cover;
+    }
+
+    .img-display {
+      height:185px;
+      border-radius: 30px;
+
+    }
+
+    .dropdown-toggle::after {
+            content: none;
+    }
+    video {
+    /* override other styles to make responsive */
+    width: 100% !important;
+    height: auto !important;
+    }
+    /* #collapse
+    {
+    position:absolute;
+    z-index:1;
+    } */
+  </style>
+</head>
+<body onload="getWeather()">
+    <div class = "container-fluid">
+        <!-- carousel -->
+        <div class = "row sticky-nav">
+          <!-- <div class = "col"> -->
+            <!-- Navbar placeholder -->
+            <!-- <img src="/Reviews/img/Navbar.png" class="navbar" alt=""> -->
+            <nav class="navbar navbar-expand-sm navbar-light mx-auto bg-white static-top">
+              <div class="container-fluid" style="width:100%">
+                <a class="navbar-brand" href="Homepage.html" style="padding-left:10px;">
+                  <img src="style/logo/navbar_logo.png" width="90" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            
+                <div class=" collapse navbar-collapse justify-content-between bg-white" id="navbarNavDropdown">
+
+                    <ul class="navbar-nav ms-auto ">
+                      <li class="nav-item dropdown">
+                          <a class="nav-link mx-2 dropdown-toggle" href="#" id="eduLvlDropDown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Education Level
+                          </a>
+                          <ul class="dropdown-menu" id="eduLvlDropDown" aria-labelledby="eduLvlDropDown">
+                          <li class="dropdown-item"  onclick="getSubj(1)">Primary School</li>
+                          <li class="dropdown-item"  onclick="getSubj(2)">Secondary School</li>
+                          <li class="dropdown-item"  onclick="getSubj(3)">Junior College</li>
+                          </ul>
+                      </li>
+                      <li class="nav-item my-auto">
+                        <i class="fa-solid fa-magnifying-glass my-auto" style="color: #f96666;"></i>
+                      </li>
+                      <li>
+                        <div id="subj-dropdown"></div>
+                      </li>
+                    </ul>
+                    
+                    <ul class="navbar-nav ms-auto ">
+                      <li class="nav-item me-3">
+                        <a class="nav-link" aria-current="page" href="Create teacher profile.html">Become a Tutor</a>
+                      </li>
+                      <li class="nav-item dropdown" >
+                        <a class="nav-link dropdown-toggle border rounded-pill" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-bars me-2"></i>
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="completed_reviews.html"> My Reviews</a></li>
+                            <li><a class="dropdown-item" href="bookingpage.html">My Bookings</a></li>
+                            <li><a class="dropdown-item" href="completed_payment.html">Payment</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="Edit_Profile.html">Edit Profile</a></li>
+                            <li><a class="dropdown-item" id="logout">Logout</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+              </div>
+              </div>
+          </nav>
+          <hr class="m-0">
+          <!-- </div> -->
+        </div>
+
+
+        <div class = "row justify-content-center">
+          <div class = "col" style="height: 50%;">
+            <!-- <img src="img/background_img.png" class="bg_img" alt="">-->
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active video-container" data-bs-interval="3000">
+                  <video autoplay loop muted id="greeting" src=""></video>
+                  
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                  <!-- <img src="img/Tagline.png" class="d-block w-100" alt="..."> -->
+                  <video autoplay loop muted src="img/bgVideo.mp4"></video>
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                  <!-- <img src="img/Be a tutor.png" class="d-block w-100" alt="..."> -->
+                  <video autoplay loop muted src="img/JoinTutor.mp4"></video>
+                </div>
+              </div>
+              <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button> -->
+            </div>
+          </div>
+        </div>
+        <!--Check bootstrap, make sure that image is ok for diff screen. Ensure that card is justified to the left-->
+              <div class = "row">
+                <div class="col mx-auto">
+                <div id="homepage-shown">
+
+                </div>
+              </div>
+              </div>
+              <div class="row sticky-bottom bg-white" style="font-size: small">
+                <hr class="m-0">
+                <div class="col p-3">
+                  <i class="fa-regular fa-copyright"></i>
+                  2022, Tutizen,Inc.
+                  <span style="padding-left:20px;">&#8226;</span>
+                  <a href="about.html" class="aboutus" style="color: black;">About Us</a>
+                </div>
+              </div>
+    </div>
+
+<script>
+  //update the rating of the tutor
+  function goProfilePage(id){
+    localStorage.setItem("curTut", id)
+    window.location.href = "profile.html";
+  }
+
+// navbar sorting buttons
+  function getSubj(num){
+    if (num == 1){
+      document.getElementById("subj-dropdown").innerHTML = `
+      <li class="nav-item dropdown">
+        <a class="nav-link mx-2 dropdown-toggle" href="#" id="subjDropDown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Subjects
+                        </a>
+                        <ul class="dropdown-menu" id="subjDropDown" aria-labelledby="subjDropDown">
+                        <li class="dropdown-item" id="primarymath">Maths</li>
+                        <li class="dropdown-item" id="primarychin" >Chinese</li>
+                        <li class="dropdown-item" id="primaryeng">English</li>
+                        <li class="dropdown-item" id="primarysci">Science</li>
+                        </ul>
+      </li>`
+      document.getElementById("primarymath").addEventListener ("click", function (){lookForTutor(1)}, {once: true})
+      document.getElementById("primarychin").addEventListener ("click", function(){lookForTutor(2)}, {once: true})
+      document.getElementById("primaryeng").addEventListener ("click", function(){lookForTutor(3)}, {once: true})
+      document.getElementById("primarysci").addEventListener ("click", function(){lookForTutor(4)}, {once: true})
+    }
+    else if (num == 2){
+      document.getElementById("subj-dropdown").innerHTML = `
+      <li class="nav-item dropdown">
+        <a class="nav-link mx-2 dropdown-toggle" href="#" id="subjDropDown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Subjects
+            </a>
+            <ul class="dropdown-menu" id="subjDropDown" aria-labelledby="subjDropDown">
+              <li class="dropdown-item" id="secamath" >A Math</li>
+              <li class="dropdown-item" id="secemath">E Math</li>
+              <li class="dropdown-item" id="secpoa">POA</li>
+              <li class="dropdown-item" id="secchin">Chinese</li>
+              <li class="dropdown-item" id="secchin2">Higher Chinese</li>
+              <li class="dropdown-item" id="seceng">English</li>
+              <li class="dropdown-item" id="seclit">Literature</li>
+              <li class="dropdown-item" id="secgeo">Geography</li>
+              <li class="dropdown-item" id="sechis">History</li>
+              <li class="dropdown-item" id="secphy">Physics</li>
+              <li class="dropdown-item" id="secbio">Biology</li>
+              <li class="dropdown-item" id="secchem">Chemistry</li>
+            </ul>
+      </li>`
+      document.getElementById("secamath").addEventListener ("click", function(){lookForTutor(5)}, {once: true})
+      document.getElementById("secemath").addEventListener ("click", function(){lookForTutor(6)}, {once: true})
+      document.getElementById("secpoa").addEventListener ("click", function(){lookForTutor(7)}, {once: true})
+      document.getElementById("secchin").addEventListener ("click", function(){lookForTutor(8)}, {once: true})
+      document.getElementById("secchin2").addEventListener ("click", function(){lookForTutor(9)}, {once: true})
+      document.getElementById("seceng").addEventListener ("click", function(){lookForTutor(10)}, {once: true})
+      document.getElementById("seclit").addEventListener ("click", function(){lookForTutor(11)}, {once: true})
+      document.getElementById("secgeo").addEventListener ("click", function(){lookForTutor(12)}, {once: true})
+      document.getElementById("sechis").addEventListener ("click", function(){lookForTutor(13)}, {once: true})
+      document.getElementById("secphy").addEventListener ("click", function(){lookForTutor(14)}, {once: true})
+      document.getElementById("secbio").addEventListener ("click", function(){lookForTutor(15)}, {once: true})
+      document.getElementById("secchem").addEventListener ("click", function(){lookForTutor(16)}, {once: true})
+    }
+    else {
+      document.getElementById("subj-dropdown").innerHTML = `
+      <li class="nav-item dropdown">
+        <a class="nav-link mx-2 dropdown-toggle" href="#" id="subjDropDown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Subjects
+                        </a>
+                        <ul class="dropdown-menu" id="subjDropDown" aria-labelledby="subjDropDown">
+                        <li class="dropdown-item" id="jmath">Math</li>
+                        <li class="dropdown-item" id="jchem">Chemistry</li>
+                        <li class="dropdown-item" id="jphy">Physics</li>
+                        <li class="dropdown-item" id="jbio">Biology</li>
+                        <li class="dropdown-item" id="jecon">Economics</li>
+                        <li class="dropdown-item" id="jlit">Literature</li>
+                        <li class="dropdown-item" id="jgp">General Paper</li>
+                        <li class="dropdown-item" id="jhis">History</li>
+                        <li class="dropdown-item" id="jgeo">Geography</li>
+                        </ul>
+      </li>`
+      document.getElementById("jmath").addEventListener ("click", function(){lookForTutor(17)}, {once: true})
+      document.getElementById("jchem").addEventListener ("click", function(){lookForTutor(18)}, {once: true})
+      document.getElementById("jphy").addEventListener ("click", function(){lookForTutor(19)}, {once: true})
+      document.getElementById("jbio").addEventListener ("click", function(){lookForTutor(20)}, {once: true})
+      document.getElementById("jecon").addEventListener ("click", function(){lookForTutor(21)}, {once: true})
+      document.getElementById("jlit").addEventListener ("click", function(){lookForTutor(22)}, {once: true})
+      document.getElementById("jgp").addEventListener ("click", function(){lookForTutor(23)}, {once: true})
+      document.getElementById("jhis").addEventListener ("click", function(){lookForTutor(24)}, {once: true})
+      document.getElementById("jgeo").addEventListener ("click", function(){lookForTutor(25)}, {once: true})
+
+    }
+  }
+  var subjDict = {
+    1: {"level": "Primary 6", "subject": "Math"},
+    2: {"level": "Primary 6", "subject": "Chinese"},
+    3: {"level": "Primary 6", "subject": "English"},
+    4: {"level": "Primary 6", "subject": "Science"},
+
+    5: {"level": "Secondary 4", "subject": "A Math"},
+    6: {"level": "Secondary 4", "subject": "E Math"},
+    7: {"level": "Secondary 4", "subject": "POA"},
+    8: {"level": "Secondary 4", "subject": "Chinese"},
+    9: {"level": "Secondary 4", "subject": "Higher Chinese"},
+    10: {"level": "Secondary 4", "subject": "English"},
+    11: {"level": "Secondary 4", "subject": "Literature"},
+    12: {"level": "Secondary 4", "subject": "Geography"},
+    13: {"level": "Secondary 4", "subject": "History"},
+    14: {"level": "Secondary 4", "subject": "Physics"},
+    15: {"level": "Secondary 4", "subject": "Biology"},
+    16: {"level": "Secondary 4", "subject": "Chemistry"},
+
+    17: {"level": "H2", "subject": "Math"},
+    18: {"level": "H2", "subject": "Chemistry"},
+    19: {"level": "H2", "subject": "Physics"},
+    20: {"level": "H2", "subject": "Biology"},
+    21: {"level": "H2", "subject": "Econs"},
+    22: {"level": "H2", "subject": "Literature"},
+    23: {"level": "H1", "subject": "General Paper"},
+    24: {"level": "H2", "subject": "History"},
+    25: {"level": "H2", "subject": "Geography"},
+    }
+
+// sorting function
+  function lookForTutor(num){
+    
+      var level = subjDict[num].level
+      var subject = subjDict[num].subject
+      var userInfo = JSON.parse(localStorage.getItem("userinfo"))
+      var studentLoc = userInfo["location"]
+      console.log(studentLoc)
+
+      getStudentLoc(studentLoc)
+      setTimeout(() =>{
+        getTopTutor(level,subject)
+      }, 200)
+    }
+
+
+  function getTopTutor(level, subject){
+
+    var allTutorData = JSON.parse(sessionStorage.getItem("allTutorData"))
+    var studentLoc = JSON.parse(sessionStorage.getItem("studentLoc"))
+    var searchTrue = []
+    allTutorData.forEach(element => {
+
+    if (element.level == level && element.subject == subject){
+        searchTrue.push(element)
+    }
+    })
+    searchTrue.sort((a, b) => (a.points > b.points) ? -1 : 1)
+
+    searchTrue.forEach(element => {
+      getTutorLoc(element.location)
+    });
+
+    setTimeout(() =>{
+      displayTopTutor(searchTrue, studentLoc)
+    }, 200)
+  }
+
+  function displayTopTutor(topTutor, studentLoc){
+    var tutorLoc = JSON.parse(sessionStorage.getItem("tutorLoc"))
+
+    topTutor.forEach(element => {
+        var tutorMrt = "singapore " + element.location + " mrt"
+        var tutorCoord = tutorLoc[tutorMrt]
+        // console.log(tutorCoord)
+        var dist = haversine_distance(studentLoc, tutorCoord)
+        // console.log(dist)
+        element.points -= dist/4
+      });
+      topTutor.sort((a, b) => (a.points > b.points) ? -1 : 1)
+
+      var display = `
+          <div class = "container-fluid mx-auto">
+                <div class = "row mx-auto">
+                    `
+      topTutor.forEach(element => {
+        var Pimg = element.img
+        var Pid = element.id
+        var Pname = element.name
+        var Pmrt = element.location
+        var Pprice = element.price
+        var Ptitle = element.level + " " + element.subject
+        var Psubject = element.subject
+        var Pscore = element.score
+        
+        display += `   <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 d-flex align-items-left" onclick="goProfilePage('${Pid}')">
+                        <img src="img/${Psubject}.jpg" alt="Avatar" class="img-display">
+                          <div class="row">
+                            <div class="col-4" style="padding-right:0px">
+                              <img src="${Pimg}" alt="img/person_icon.png" class="img-fluid img-thumbnail">
+                            </div>
+                            <div class="col-8 information py-2" style="padding-left:0px">
+                              <p style="font-weight: bold; margin: 0px;">${Ptitle}</p>
+                              <p style="margin: 0px;">S${Pprice} &nbsp&nbsp ${Pname}
+                              </p>
+                              <p style="font-size: 15px;" ><span class="fa-solid fa-location-dot" style="color: #f96666;"></span> 
+                              <span style="font-size: 15px; margin: 0px;">${Pmrt}</span> &nbsp&nbsp&nbsp&nbsp <i class="fa fa-star" style="color: #f96666;"></i>&nbsp${Pscore}</p>
+                              
+                            </div>
+                          </div>
+                          </div>`
+        });
+        display += "</div></div>"
+      document.getElementById("homepage-shown").innerHTML = display
+  }
+</script>
+
+<!-- Weather API -->
+<script>
+  function getWeather() {
+            var city = "singapore"
+            var myapikey = "bdae21b6a0d1e797b8ab74bddc347609"  // TODO: add your API KEY here
+            var url = "https://api.openweathermap.org/data/2.5/weather"
+            
+            // get weather json data
+            // use error/exception handling code in case the server doesn't return data
+            axios.get(url, {
+                    params: {
+                        q : city,
+                        APPID : myapikey
+                    }
+                })
+                .then(response =>  {
+                    console.log(response.data)
+                    handleData(response.data);
+                    
+                })
+                .catch(error => {
+                    console.log(error.message)
+                    // return null if there is exception/error
+                    data = "Invalid Input or No data found!";
+                }); 
+        }
+
+  function handleData(obj) {
+      var dt = obj.dt
+      // var milisec = new Date().getTime()
+      // var dt = Math.floor(milisec/1000)
+
+      var sunrise = obj.sys.sunrise
+      var sunriseMin = sunrise - 1800
+      var sunriseMax = sunrise + 1800
+
+      var sunset = obj.sys.sunset
+      var sunsetMin = sunset - 1800
+      var sunsetMax = sunset + 1800
+      var date = new Date(dt*1000)
+      var dateTime = date.toTimeString()
+      var time = dateTime.split(" ")[0]
+      var hour = Number(time.split(":")[0])
+
+      if (hour >= 0 && hour <= 11){
+        document.getElementById("greeting").src = "img/Good Morning.mp4"
+      } 
+      else if (hour >= 12 && hour <= 17){
+        document.getElementById("greeting").src = "img/Good Afternoon.mp4"
+      } 
+      else if (hour >= 18 && hour <= 24){
+        document.getElementById("greeting").src = "img/Good Evening.mp4"
+      } 
+      
+  }
+
+</script>
+
+<!-- Google Maps API -->
+<script>
+  var url = "https://maps.googleapis.com/maps/api/geocode/json?"
+  var key = "AIzaSyDzo6KTO2Ex_xehd83L3-QtCMYGOaTTa_U"
+
+  function haversine_distance(mk1, mk2) {
+      var R = 3958.8; // Radius of the Earth in miles
+      var rlat1 = mk1.lat * (Math.PI/180); // Convert degrees to radians
+      var rlat2 = mk2.lat * (Math.PI/180); // Convert degrees to radians
+      var difflat = rlat2-rlat1; // Radian difference (latitudes)
+      var difflon = (mk2.lng - mk1.lng) * (Math.PI/180); // Radian difference (longitudes)
+      var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+        return d;
+    }
+  function init(){}
+
+  function getTutorLoc(loc) {
+  loc = "singapore " + loc + " mrt"
+
+// Getting coord for tutor
+  axios.get(url, {
+      params: {
+          address: loc,
+          key: key
+      }
+  })
+      .then(response => {
+
+          let lat = response.data.results[0].geometry.location.lat
+          let lng = response.data.results[0].geometry.location.lng
+          let tutorLoc = {"lat": lat, "lng": lng}
+          // console.log(loc)
+          var existing = JSON.parse(sessionStorage.getItem("tutorLoc"))
+          if (existing == null){
+            var existing = {}
+          }
+          if (existing[loc] == null){
+          existing[loc] = tutorLoc
+          sessionStorage.setItem("tutorLoc", JSON.stringify(existing))}
+          })
+      
+      .catch( error => {
+          console.log(error.message);
+      });
+  }
+
+function getStudentLoc(loc) {
+loc = "singapore " + loc + " mrt"
+
+// Getting coord for tutor
+axios.get(url, {
+    params: {
+        address: loc,
+        key: key
+    }
+})
+    .then(response => {
+
+        let lat = response.data.results[0].geometry.location.lat
+        let lng = response.data.results[0].geometry.location.lng
+        let studentLoc = {"lat": lat, "lng": lng}
+        // console.log(studentLoc)
+        sessionStorage.setItem("studentLoc", JSON.stringify(studentLoc));
+    })
+    .catch( error => {
+        console.log(error.message);
+    });
+}
+</script>
+
+<!-- Firebase -->
+<script type="module">
+
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+  apiKey: "AIzaSyDc714DoZoHSdClJoOi3K95Ho-4nPH4fZY",
+  authDomain: "tutizen-c8f64.firebaseapp.com",
+  projectId: "tutizen-c8f64",
+  storageBucket: "tutizen-c8f64.appspot.com",
+  messagingSenderId: "210404368356",
+  appId: "1:210404368356:web:c8d68acf2541de5ab9b1f1",
+  databaseURL: "https://tutizen-c8f64-default-rtdb.asia-southeast1.firebasedatabase.app/"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  /* CODE ADDED: START */
+  // Import the functions needed to read from realtime database
+  import { getDatabase, ref, onValue, child, remove } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js";
+  // connect to the realtime database and authentication
+  const db = getDatabase();
+  const auth = getAuth();
+
+  //Logout
+  var log_out = document.getElementById("logout");
+    const logout = () => {
+        sessionStorage.clear()
+        localStorage.clear()
+        signOut(auth).then(() => {
+            // Sign-out successful.
+            window.location.href = "index.html";
+        }).catch((error) => {
+            // An error happened.
+        });
+    }
+    log_out.addEventListener("click", logout);
+
+  // get a reference to the data
+  const tutors = ref(db, 'tutor');
+  var arr = []
+
+  onValue(tutors, (snapshot) => {
+  sessionStorage.clear()
+  const data = snapshot.val();
+  console.log(data)
+
+//Adding tutor info into arr
+  Object.keys(data).forEach(tutor => {
+    var person = data[tutor]
+    var info = person.info
+    var img = info.img
+    var name = info.name
+    var mrt = info.mrt
+    var price = "$" + info.price + "/hr"
+
+//Adding reviews to arr
+    var allReview = person.review
+    var num = Object.keys(allReview).length
+    var total = 0
+    var avg = 0
+    if (allReview['0'] != ""){
+    Object.keys(allReview).forEach(reviewIndex => {
+      var reviewObj = allReview[reviewIndex]
+      total += Number(reviewObj.score)
+    });
+    avg = Math.round((total/num) * 10)/10}
+
+    else if (allReview[0] == "" && num > 1){
+      var reviewPath = ref(db, "tutor/" +tutor+"/review/0")
+      remove(reviewPath)
+    }
+
+
+// Adding subject to array
+    var subjectObj = person.subject
+    Object.keys(subjectObj).forEach(school => {
+        var schooling = ""
+        if (school == "Tertiary"){
+            schooling = "Junior College"
+        }
+        else schooling = school
+        
+        var level = subjectObj[school]
+
+        Object.keys(level).forEach(subject =>{
+          var tutorsubjectObj = {}
+          tutorsubjectObj["id"] = tutor
+          tutorsubjectObj["img"] = img
+          tutorsubjectObj["name"] = name
+          tutorsubjectObj["location"] = mrt
+          tutorsubjectObj["price"] = price
+          tutorsubjectObj["level"] = level[subject]
+          tutorsubjectObj["subject"] = subject
+          tutorsubjectObj["score"] = avg
+          tutorsubjectObj['points'] = avg
+          arr.push(tutorsubjectObj)
+          
+            
+        }) 
+        
+            
+    })
+  })
+  sessionStorage.setItem("allTutorData", JSON.stringify(arr)) 
+  var display = `
+        <div class = "container-fluid">
+              <div class = "row">
+                  `
+    while (arr.length > 0){ 
+    var max = arr.length-1;  
+    var randomIndex = Math.random()*(max)
+    randomIndex = Math.floor(randomIndex)
+    
+    var Pimg = arr[randomIndex].img
+    var Pid = arr[randomIndex].id
+    var Pname = arr[randomIndex].name
+    var Pmrt = arr[randomIndex].location
+    var Pprice = arr[randomIndex].price
+    var Ptitle = arr[randomIndex].level + " " + arr[randomIndex].subject
+    var Pscore = arr[randomIndex].score
+    var Psubject = arr[randomIndex].subject
+
+    display += `   <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage('${Pid}')">
+                    <img src="img/${Psubject}.jpg" alt="Avatar" class="img-display">
+                      <div class="row">
+                        <div class="col-4" style="padding-right:0px">
+                          <img src="${Pimg}" alt="Generic placeholder image" class="img-fluid img-thumbnail">
+                        </div>
+                        <div class="col-8 information py-2" style="padding-left:0px">
+                          <p style="font-weight: bold; margin: 0px;">${Ptitle}</p>
+                          <p style="margin: 0px;">S${Pprice} &nbsp&nbsp ${Pname}
+                          </p>
+                          <p style="font-size: 15px;" ><span class="fa-solid fa-location-dot" style="color: #f96666;"></span> 
+                          <span style="font-size: 15px; margin: 0px;">${Pmrt}</span> &nbsp&nbsp&nbsp&nbsp <i class="fa fa-star" style="color: #f96666;"></i>&nbsp${Pscore}</p>
+                          
+                        </div>
+                      </div>
+                      </div>`
+    arr.splice(randomIndex,1)
+  }
+  display += "</div></div>"
+  document.getElementById("homepage-shown").innerHTML = display
+  })
+
+
+</script>
+  
+  
+
+                    
+</body>
+</html>

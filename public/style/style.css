@@ -1,0 +1,88 @@
+/* 
+<!-- icon -->
+<link rel="icon" href="../style/favicon.ico">
+
+<!-- external style sheet -->
+<link href='../style/style.css' rel='stylesheet'> 
+*/
+/* all put this link into header of your HTML file*/
+
+@import url('https://fonts.googleapis.com/css?family=Open Sans');
+@import url("//fonts.googleapis.com/css?family=Prata");
+
+body {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 19px ;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: bold !important; 
+}
+
+.accordion-button{ 
+    font-size: large;
+}
+
+.container-fluid .row .col .bg_img {
+    height:120px;
+    width:100%;
+    padding:10px 0px;
+    margin-bottom: 10px;
+}
+.btn {
+    border-radius: 20px;
+    padding: 5px 15px;
+    min-width: 100px;
+    text-align: center;
+    margin: 2px;
+    background-color: #fa7979;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif!important;
+    border-color:  #fa7979;
+}
+
+.btn:hover{
+    background-color: #fa7979!important;
+    border-color:  #fa7979 !important;
+    color: white !important;
+}
+.sticky-nav {
+    align-self: flex-start;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    border-bottom: 1px;
+}
+.sticky-bottom {
+    align-self: flex-start;
+    position: sticky;
+    /* margin-left: 10px; */
+    bottom: 0;
+    z-index: 1;
+}
+.aboutus{
+    text-decoration: none;
+}
+.aboutus:hover{
+    text-decoration: underline;
+}
+.profile-img{
+    width: 30%;
+    border-radius: 60%;
+}
+.profile-card{
+    border: 0px
+}
+
+.back-video{
+    right:0;
+    bottom:0;
+    z-index: -1;
+
+}
+
+.card{
+    border-radius: 30px;
+}
+
+
