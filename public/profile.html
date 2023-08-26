@@ -67,6 +67,7 @@
         .fa-comment:hover {
             color: white;
         }
+
     </style>
 </head>
 
@@ -118,27 +119,19 @@
 
         <div class="row justify-content-center">
             <div class="col">
-                <img src="img/background_img.jpg" class="bg_img" alt="">
+                <img id="industryImage" src="img/background_img.jpg" class="bg_img" alt="">
             </div>
         </div>
         <div class="row justify-content-center profile-parent">
             <div class="col-lg-3  col-md-12 sticky-lg-top text-center">
-                <div id="profile pic"></div>
+                <img id="profileImage" class="img-fluid img-thumbnail mt-3 mb-2"style="width: 200px; border-radius: 50%"></img>
 
                 <h2 id="name">Luis Tan</h2>
                 <p class="mb-2 mt-2">
                     <i class="fa-solid fa-location-dot" style="color: #000000;"></i>
-                    <span id="mrt">Seng kang</span>
+                    <span id="location">Seng kang</span>
                 </p>
-                <p class="mb-2 mt-2" id="review-avg">4.8
-                    <i class="fa fa-star" style="color: #000000;"></i>
-                    <i class="fa fa-star" style="color: #000000;"></i>
-                    <i class="fa fa-star" style="color: #000000;"></i>
-                    <i class="fa fa-star" style="color: #000000;"></i>
-                    <i class="fa fa-star" style="color: #000000;"></i>
-                    (5) &nbsp &nbsp>
-                </p>
-                <h5 class="mb-3 mt-2" id="price">$50/hr</h5>
+                <h5 class="mb-3 mt-2" id="occupation">$50/hr</h5>
                 <!-- <span onclick="chat()"><i class="fa-solid fa-comment fa-2xl"; style="color: #f96666;"></i></span> -->
                 <button type="button" class="btn me-3 mb-4" onclick="chat()">&nbsp<i
                         class="fa-regular fa-comment fa-2xl" ;></i>&nbsp</button>
@@ -149,27 +142,31 @@
                 <div class="row">
                     <div class="col">
                         <!-- <hr style="border-top:3px solid #F96666" class="mb-2"> -->
-                        <h2 class="mb-3">What this Tutor Offers</h2>
-                        <div id="offering"></div>
+                        <h2 class="mb-3">This are my day to day</h2>
+                        <div id="day2day">
+                            <ul>
+                                <li>Collaborating with cross-functional teams</li>
+                                <li>Writing and testing code</li>
+                                <li>Troubleshooting and debugging software issues</li>
+                                <li>Participating in code reviews</li>
+                                <li>Attending team meetings and discussions</li>
+                                <li>Designing user interfaces and experiences</li>
+                                <li>Testing and implementing new changes</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <div class="row mt-2">
                     <div class="col">
-                        <h2>Subjects Taught</h2>
-                        <div id="subject"></div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <h2 class="mb-2 mt-5">Reviews</h2>
-                        <div class="col">
-                            <i class="fa fa-star" style="color: #000000;"></i>
-                            <h5 class="d-inline" id="review-start">4.8 </h5>
                             <p id="review-num">(5 reviews)</p>
-                            <p id="badge"></p>
                             <hr style="border:3px solid #000000">
+                            <ul>
+                                <li>Version control systems (e.g., Git)</li>
+                                <li>Software development methodologies (e.g., Agile)</li>
+                                <li>Database design and management</li>
+                                <li>User interface (UI) and user experience (UX) design</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -193,12 +190,8 @@
 
 
                 <div class="row">
-                    <div class="col">
                         <button class="btn btn-light btn-outline-dark mt-2 mb-3" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
-                            Show more
-                        </button>
-                    </div>
                 </div>
 
                 <div class="row mt-3">
@@ -216,7 +209,7 @@
                 2023, Kage, Inc.
                 <span style="padding-left:20px;">&#8226;</span>
                 <a href="about.html" class="aboutus" style="color: black;">About Us</a>
-              </div>
+            </div>
         </div>
     </div>
 
@@ -502,114 +495,11 @@
         document.getElementById("price").innerText = `$${price}/hr - $${max}/hr`
 
         //Review
-        var allReview = person.review
-        var display2 = ""
-        var hidden = ""
-        var total = 0
-        var num = Object.keys(allReview).length
-        var star = `<i class="fa fa-star" style="color: #f96666;"></i>`
-        // console.log(allReview)
-        var arr = []
-        var avg = 0 
-
-        for (let reviewObj in allReview) {
-            arr.push(reviewObj)
-        }
-        arr = arr.reverse()
-
-
-        if (allReview[0] == "") {
-            display2 = `<p class="text-center">No reviews yet</p>`
-            num = 0
-            avg = 0
-        }
-
-        else if (num > 3) {
-            var star = `<i class="fa fa-star" style="color: #f96666;"></i>`
-            for (let i = 0; i < 3; i++) {
-                var j = arr[i]
-                var reviewObj = allReview[j]
-                var name = reviewObj.name
-                var level = reviewObj.level
-                var subject = reviewObj.subject
-                var text = reviewObj.text
-                var score = reviewObj.score
-                total += Number(score)
-
-                display2 += `
-        <div class="list-group-item " aria-current="true">
-            <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">${name}</h5>
-            </div>
-        <p class="mb-1">${level}, ${subject}</p>
-        <p class="mb-1">${text}</p>`
-                avg = Math.round((total / num) * 10) / 10
-                star = star.repeat(score)
-                display2 += `${star} </div>`
-                star = `<i class="fa fa-star" style="color: #f96666;"></i>`
-            }
-            for (let i = 3; i < num; i++) {
-                var j = arr[i]
-                var reviewObj = allReview[j]
-                var name = reviewObj.name
-                var level = reviewObj.level
-                var subject = reviewObj.subject
-                var text = reviewObj.text
-                var score = reviewObj.score
-                total += Number(score)
-
-                hidden += `
-        <div class="list-group-item " aria-current="true">
-            <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">${name}</h5>
-            </div>
-        <p class="mb-1">${level}, ${subject}</p>
-        <p class="mb-1">${text}</p>`
-                avg = Math.round((total / num) * 10) / 10
-                star = star.repeat(score)
-                hidden += `${star} </div>`
-                star = `<i class="fa fa-star" style="color: #f96666;"></i>`
-            }
-        }
-        else {
-            for (let i = 0; i < num; i++) {
-                var j = arr[i]
-                var reviewObj = allReview[j]
-                var name = reviewObj.name
-                var level = reviewObj.level
-                var subject = reviewObj.subject
-                var text = reviewObj.text
-                var score = reviewObj.score
-                // console.log(star)
-                total += Number(score)
-
-                display2 += `
-        <div class="list-group-item " aria-current="true">
-            <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">${name}</h5>
-            </div>
-        <p class="mb-1">${level}, ${subject}</p>
-        <p class="mb-1">${text}</p>`
-                avg = Math.round((total / num) * 10) / 10
-                star = star.repeat(score)
-                display2 += `${star} </div>`
-                star = `<i class="fa fa-star" style="color: #f96666;"></i>`
-            }
-        }
-        var starNum = Math.floor(avg)
-        if (avg * 2 >= starNum + 1) {
-            starNum++
-        }
-        var starShow = star.repeat(starNum)
-        
-
-        document.getElementById("review-avg").innerHTML = `${avg} ${starShow} (${num})`
-        document.getElementById("review-start").innerText = avg
-        document.getElementById("review-num").innerText = `(${num} reviews)`
-        document.getElementById("review-shown").innerHTML = display2
-        document.getElementById("hidden-review").innerHTML = hidden
-    })
-        ;
 </script>
+
+
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzo6KTO2Ex_xehd83L3-QtCMYGOaTTa_U&callback=initMap&v=weekly"
+    defer></script>
 
 </html>

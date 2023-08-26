@@ -107,19 +107,19 @@
     position:absolute;
     z-index:1;
     } */
-  </style>
+</style>
 </head>
 <body onload="getWeather()">
     <div class = "container-fluid">
         <!-- carousel -->
         <div class = "row sticky-nav">
-          <!-- <div class = "col"> -->
+        <!-- <div class = "col"> -->
             <!-- Navbar placeholder -->
             <!-- <img src="/Reviews/img/Navbar.png" class="navbar" alt=""> -->
             <nav class="navbar navbar-expand-sm navbar-light mx-auto bg-white static-top">
-              <div class="container-fluid" style="width:100%">
+            <div class="container-fluid" style="width:100%">
                 <a class="navbar-brand" href="Homepage.html" style="padding-left:10px;">
-                  <img src="style/logo/navbar_logo.png" width="90" alt="">
+                <img src="style/logo/navbar_logo.png" width="90" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -128,30 +128,35 @@
                 <div class=" collapse navbar-collapse justify-content-between bg-white" id="navbarNavDropdown">
 
                     <ul class="navbar-nav ms-auto ">
-                      <li class="nav-item dropdown">
-                          <a class="nav-link mx-2 dropdown-toggle" href="#" id="eduLvlDropDown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Industry
-                          </a>
-                          <ul class="dropdown-menu" id="eduLvlDropDown" aria-labelledby="eduLvlDropDown">
-                          <li class="dropdown-item"  onclick="getSubj(1)">Primary School</li>
-                          <li class="dropdown-item"  onclick="getSubj(2)">Secondary School</li>
-                          <li class="dropdown-item"  onclick="getSubj(3)">Junior College</li>
-                          </ul>
-                      </li>
-                      
-                      <li class="nav-item me-3">
-                        <a class="nav-link" aria-current="page" href="#" onclick="getSubj(1)">Industry</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link mx-2 dropdown-toggle" href="#" id="eduLvlDropDown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Industry
+                        </a>
+                        <ul class="dropdown-menu" id="eduLvlDropDown" aria-labelledby="eduLvlDropDown">
+                        <li class="dropdown-item"  onclick="getIndus()">Information Tech</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Engineering</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Energy</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Automotives</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Healthcare</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Finance</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Human Resources</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Real Estate</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Marketing</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Media</li>
+                        <li class="dropdown-item"  onclick="getIndus()">Hospitality</li>
+
+                        </ul>
                     </li>
-                      <li class="nav-item my-auto">
+                    <li class="nav-item my-auto">
                         <i class="fa-solid fa-magnifying-glass my-auto" style="color: #000000;"></i>
-                      </li>
-                      <li>
+                    </li>
+                    <li>
                         <div id="subj-dropdown"></div>
-                      </li>
+                    </li>
                     </ul>
                     
                     <ul class="navbar-nav ms-auto ">
-                      <li class="nav-item dropdown" >
+                    <li class="nav-item dropdown" >
                         <a class="nav-link dropdown-toggle border rounded-pill" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-bars me-2"></i>
                             <i class="fa-solid fa-user"></i>
@@ -163,275 +168,330 @@
                             <li><a class="dropdown-item" href="Edit_Profile.html">Edit Profile</a></li>
                             <li><a class="dropdown-item" id="logout">Logout</a></li>
                         </ul>
-                      </li>
+                    </li>
                     </ul>
-              </div>
-              </div>
-          </nav>
-          <hr class="m-0">
-          <!-- </div> -->
+            </div>
+            </div>
+        </nav>
+        <hr class="m-0">
+        <!-- </div> -->
         </div>
         <div class="row justify-content-center">
-          <div class="col">
+        <div class="col">
 
-          </div>
+        </div>
         
         </div>
 
         <div class = "row justify-content-center">
-          <div class = "col" style="height: 50%;">
+        <div class = "col" style="height: 50%;">
             <!-- <img src="img/background_img.png" class="bg_img" alt="">-->
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-indicators">
+            <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              </div>
-              <div class="carousel-inner">
+            </div>
+            <div class="carousel-inner">
                 <div class="carousel-item active video-container" data-bs-interval="3000">
-                  <video autoplay loop muted id="greeting" src=""></video>
-                  
+                <video autoplay loop muted id="greeting" src=""></video>
+                
                 </div>
-              </div>
-              <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            </div>
+            <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
-              </button> -->
+            </button> -->
             </div>
-          </div>
+        </div>
         </div>
         <!--Check bootstrap, make sure that image is ok for diff screen. Ensure that card is justified to the left-->
-              <div class = "row">
+            <div class = "row">
                 <div class="col mx-auto">
                 <div id="homepage-shown">
+                    <div class="container-fluid">
+                        <div class="row">
+                        <!-- First Card -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Isabella Tan", "Software Developer", "Orchard", "https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2023/06/person-at-computer.jpeg.jpg", "https://blog-pixomatic.s3.appcnt.com/image/22/01/26/61f166e07f452/_orig/pixomatic_1572877263963.png")'>
+                            <img src="https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2023/06/person-at-computer.jpeg.jpg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://blog-pixomatic.s3.appcnt.com/image/22/01/26/61f166e07f452/_orig/pixomatic_1572877263963.png" alt="Isabella Tan" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Software Developer</p>
+                                    <p style="margin: 0px;" id="name">Isabella Tan</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Orchard</span>
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- Second Card -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Ethan Lim", "Marketing Manager", "Chinatown", "https://s40424.pcdn.co/in/wp-content/uploads/2022/07/content-marketing.jpg.optimal.jpg", "https://artriva.com/media/k2/items/cache/c889234799e865bbe90cee71f6cd2e53_XL.jpg")'>
+                            <img src="https://s40424.pcdn.co/in/wp-content/uploads/2022/07/content-marketing.jpg.optimal.jpg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://artriva.com/media/k2/items/cache/c889234799e865bbe90cee71f6cd2e53_XL.jpg" alt="Ethan Lim" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Marketing Manager</p>
+                                    <p style="margin: 0px;" id="name">Ethan Lim</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Chinatown</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Third Card -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Olivia Ng", "Graphic Designer", "Bugis", "https://cdn.logojoy.com/wp-content/uploads/20200612115158/AdobeStock_88222430-1-min-scaled.jpeg", "https://wallpapers.com/images/hd/professional-profile-pictures-dgevd7f8cc177lzv.jpg")'>
+                            <img src="https://cdn.logojoy.com/wp-content/uploads/20200612115158/AdobeStock_88222430-1-min-scaled.jpeg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://wallpapers.com/images/hd/professional-profile-pictures-dgevd7f8cc177lzv.jpg" alt="Olivia Ng" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Graphic Designer</p>
+                                    <p style="margin: 0px;" id="name">Olivia Ng</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Bugis</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fourth Card -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Liam Tan", "Financial Analyst", "Raffles Place", "https://www.wealthandfinance-news.com/wp-content/uploads/2021/07/Finance-technology.jpg", "https://wallpapers.com/images/hd/professional-profile-pictures-2880-x-1920-xq8yol0nn3qfm0w4.jpg")'>
+                            <img src="https://www.wealthandfinance-news.com/wp-content/uploads/2021/07/Finance-technology.jpg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://wallpapers.com/images/hd/professional-profile-pictures-2880-x-1920-xq8yol0nn3qfm0w4.jpg" alt="Liam Tan" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Financial Analyst</p>
+                                    <p style="margin: 0px;" id="name">Liam Tan</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Raffles Place</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fifth Card -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Sophia Lim", "Healthcare Professional", "Novena", "https://assets.aboutamazon.com/21/d3/171c031b4871a367060f2b974a59/health-hero-1.jpg", "https://i.pinimg.com/originals/77/71/68/7771683223d86b237a3304d6f32828b9.jpg")'>
+                            <img src="https://assets.aboutamazon.com/21/d3/171c031b4871a367060f2b974a59/health-hero-1.jpg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://i.pinimg.com/originals/77/71/68/7771683223d86b237a3304d6f32828b9.jpg" alt="Sophia Lim" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Healthcare Professional</p>
+                                    <p style="margin: 0px;" id="name">Sophia Lim</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Novena</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 6 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Sophie Lee", "Data Analyst", "Bedok", "https://www.springboard.com/blog/wp-content/uploads/2021/05/useful-data-analysis-methods-to-use-on-your-next-project-scaled.jpeg", "https://images.unsplash.com/photo-1544504942-5b5e16275050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fHw%3D&w=1000&q=80")'>
+                            <img src="https://www.springboard.com/blog/wp-content/uploads/2021/05/useful-data-analysis-methods-to-use-on-your-next-project-scaled.jpeg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://images.unsplash.com/photo-1544504942-5b5e16275050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fHw%3D&w=1000&q=80" alt="Placeholder Profile Image" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Data Analyst</p>
+                                    <p style="margin: 0px;" id="name">Sophie Lee</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Bedok</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 7 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Lucas Tan", "Marketing Specialist", "Tampines", "https://s40424.pcdn.co/in/wp-content/uploads/2022/07/content-marketing.jpg.optimal.jpg", "https://i.pinimg.com/originals/fa/be/61/fabe61b03be64af9d7deefbb59ddb278.jpg")'>
+                            <img src="https://s40424.pcdn.co/in/wp-content/uploads/2022/07/content-marketing.jpg.optimal.jpg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://i.pinimg.com/originals/fa/be/61/fabe61b03be64af9d7deefbb59ddb278.jpg" alt="Placeholder Profile Image" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Marketing Specialist</p>
+                                    <p style="margin: 0px;" id="name">Lucas Tan</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Tampines</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 8 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Aiden Lim", "UX Designer", "Clementi", "https://www.mindinventory.com/blog/wp-content/uploads/2023/05/mobile-ux-design-best-practices.webp", "https://media.istockphoto.com/id/942166754/photo/portrait-of-handsome-asian-man-smiling.jpg?s=612x612&w=0&k=20&c=qOl1v5lZb_UrHrUOKJ_vOFvfS9McrijC9c75QYryqvw=")'>
+                            <img src="https://www.mindinventory.com/blog/wp-content/uploads/2023/05/mobile-ux-design-best-practices.webp" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://media.istockphoto.com/id/942166754/photo/portrait-of-handsome-asian-man-smiling.jpg?s=612x612&w=0&k=20&c=qOl1v5lZb_UrHrUOKJ_vOFvfS9McrijC9c75QYryqvw=" alt="Placeholder Profile Image" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">UX Designer</p>
+                                    <p style="margin: 0px;" id="name">Aiden Lim</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Clementi</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 9 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Ella Tan", "Software Engineer", "Woodlands", "https://uploads-ssl.webflow.com/62e95dddfb380a0e61193e7d/634970c7cbeed5644711b937_62fd57ccd6890f25796f92f9_AdobeStock_295461823.jpeg", "https://as2.ftcdn.net/v2/jpg/03/86/24/79/1000_F_386247946_09aJRdK2ovnN4oETADZKPQwZ4CGlMuoD.jpg")'>
+                            <img src="https://uploads-ssl.webflow.com/62e95dddfb380a0e61193e7d/634970c7cbeed5644711b937_62fd57ccd6890f25796f92f9_AdobeStock_295461823.jpeg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://as2.ftcdn.net/v2/jpg/03/86/24/79/1000_F_386247946_09aJRdK2ovnN4oETADZKPQwZ4CGlMuoD.jpg" alt="Placeholder Profile Image" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Software Engineer</p>
+                                    <p style="margin: 0px;" id="name">Ella Tan</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Woodlands</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Zachary Lim", "Financial Advisor", "Bukit Timah", "https://s40424.pcdn.co/in/wp-content/uploads/2022/03/What-is-Financial-Management.jpg.optimal.jpg", "https://1.bp.blogspot.com/-sEU_IAX341A/XM-_ihNliwI/AAAAAAAAhfk/4IISxHRhRjky22dYMXAfASHpP8e67_7bwCLcBGAs/s1600/Asian%2BBusiness%2BHeadshots%2B7.jpg")'>
+                            <img src="https://s40424.pcdn.co/in/wp-content/uploads/2022/03/What-is-Financial-Management.jpg.optimal.jpg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://1.bp.blogspot.com/-sEU_IAX341A/XM-_ihNliwI/AAAAAAAAhfk/4IISxHRhRjky22dYMXAfASHpP8e67_7bwCLcBGAs/s1600/Asian%2BBusiness%2BHeadshots%2B7.jpg" alt="Zachary Lim" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Financial Advisor</p>
+                                    <p style="margin: 0px;" id="name">Zachary Lim</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Bukit Timah</span>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- Card 11 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Emma Wong", "Teacher", "Ang Mo Kio", "https://resilienteducator.com/wp-content/uploads/2014/11/math-teacher.jpg", "https://media.istockphoto.com/id/1318327528/photo/charming-asian-businesswoman-working-with-a-laptop-at-the-office-looking-at-camera.webp?b=1&s=170667a&w=0&k=20&c=CCy-cR75BRr9RnPcFL4ODOTJr6GpBZnPwoZDImPaA_Y=")'>
+                            <img src="https://resilienteducator.com/wp-content/uploads/2014/11/math-teacher.jpg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://media.istockphoto.com/id/1318327528/photo/charming-asian-businesswoman-working-with-a-laptop-at-the-office-looking-at-camera.webp?b=1&s=170667a&w=0&k=20&c=pothieEuIAio8P7GZcAdVMZ2jQUqupBAZy4q8oFrQ-c=" alt="Emma Wong" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Teacher</p>
+                                    <p style="margin: 0px;" id="name">Emma Wong</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Ang Mo Kio</span>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- Card 12 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Daniel Ng", "Accountant", "Jurong East", "https://www.franklin.edu/sites/default/files/styles/btcb_photo/public/fr/back%20to%20college%20blog/main%20images/iStock-983321926.jpg?itok=usJ_HhgI", "https://atd-blogs.s3.us-east-2.amazonaws.com/wp-content/uploads/2022/04/16142821/cool-profile-pictures-for-girls-9.webp")'>
+                            <img src="https://www.franklin.edu/sites/default/files/styles/btcb_photo/public/fr/back%20to%20college%20blog/main%20images/iStock-983321926.jpg?itok=usJ_HhgI" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://atd-blogs.s3.us-east-2.amazonaws.com/wp-content/uploads/2022/04/16142821/cool-profile-pictures-for-girls-9.webp" alt="Daniel Ng" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Accountant</p>
+                                    <p style="margin: 0px;" id="name">Daniel Ng</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Jurong East</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 13 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Sophia Chen", "Graphic Designer", "Novena", "https://media.istockphoto.com/id/1063723682/photo/hand-sketching-a-designer-villa-with-pool.jpg?s=612x612&w=0&k=20&c=SlIacvwSEEsZ-2imWLDk6dC0glhaWEg-pOGFSK4YQuI=", "https://www.whiteroomstudio.com.sg/wordpress/wp-content/uploads/2021/09/SamanthaDing_002-1024x683.jpeg")'>
+                            <img src="https://media.istockphoto.com/id/1063723682/photo/hand-sketching-a-designer-villa-with-pool.jpg?s=612x612&w=0&k=20&c=SlIacvwSEEsZ-2imWLDk6dC0glhaWEg-pOGFSK4YQuI=" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://www.whiteroomstudio.com.sg/wordpress/wp-content/uploads/2021/09/SamanthaDing_002-1024x683.jpeg" alt="Sophia Chen" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Graphic Designer</p>
+                                    <p style="margin: 0px;" id="name">Sophia Chen</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Novena</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 14 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Alex Tan", "Software Engineer", "Tampines", "https://cdn.majorel.com/wp-content/uploads/2019/12/09131220/majorel-consulting-team-scaled-5.jpeg", "https://media.istockphoto.com/id/614315942/photo/portrait-of-asian-chinese-businessman.jpg?s=612x612&w=0&k=20&c=pothieEuIAio8P7GZcAdVMZ2jQUqupBAZy4q8oFrQ-c=")'>
+                            <img src="https://cdn.majorel.com/wp-content/uploads/2019/12/09131220/majorel-consulting-team-scaled-5.jpeg" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://media.istockphoto.com/id/614315942/photo/portrait-of-asian-chinese-businessman.jpg?s=612x612&w=0&k=20&c=pothieEuIAio8P7GZcAdVMZ2jQUqupBAZy4q8oFrQ-c=" alt="Alex Tan" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Software Engineer</p>
+                                    <p style="margin: 0px;" id="name">Alex Tan</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Tampines</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 15 -->
+                        <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick='goProfilePage("Olivia Lee", "Marketing Manager", "Orchard", "https://online.norwich.edu/sites/default/files/styles/resource_standard_hero/public/content/resources/header/201.jpg?itok=1NslraSU", "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")'>
+                            <img src="https://online.norwich.edu/sites/default/files/styles/resource_standard_hero/public/content/resources/header/201.jpg?itok=1NslraSU" alt="Avatar" class="img-display">
+                            <div class="row">
+                                <div class="col-4" style="padding-right:0px">
+                                    <img id="industry image" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Olivia Lee" class="img-fluid img-thumbnail">
+                                </div>
+                                <div class="col-8 information py-2" style="padding-left:0px">
+                                    <p style="font-weight: bold; margin: 0px;" id="occupation">Marketing Manager</p>
+                                    <p style="margin: 0px;" id="name">Olivia Lee</p>
+                                    <p style="font-size: 15px;"><span class="fa-solid fa-location-dot" style="color: #000000;"></span>
+                                        <span style="font-size: 15px; margin: 0px;" id="location">Orchard</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
                 </div>
-              </div>
-              </div>
-              <div class="row sticky-bottom bg-white" style="font-size: small">
+            </div>
+            </div>
+            <div class="row sticky-bottom bg-white" style="font-size: small">
                 <hr class="m-0">
                 <div class="col p-3">
-                  <i class="fa-regular fa-copyright"></i>
-                  2023, Kage, Inc.
-                  <span style="padding-left:20px;">&#8226;</span>
-                  <a href="about.html" class="aboutus" style="color: black;">About Us</a>
+                <i class="fa-regular fa-copyright"></i>
+                2023, Kage, Inc.
+                <span style="padding-left:20px;">&#8226;</span>
+                <a href="about.html" class="aboutus" style="color: black;">About Us</a>
                 </div>
-              </div>
+            </div>
     </div>
 
-<script>
-  //update the rating of the tutor
-  function goProfilePage(id){
-    localStorage.setItem("curTut", id)
-    window.location.href = "profile.html";
-  }
+    <script>
+        function goProfilePage(name, occupation, location,industryImage, profileImage,) {
+            // Prepare data to send
+            const data = {
+                name: name,
+                occupation: occupation,
+                location: location,
+                industryImage: industryImage,
+                profileImage: profileImage
+            };
 
-// navbar sorting buttons
-  function getSubj(num){
-    if (num == 1){
-      document.getElementById("subj-dropdown").innerHTML = `
-      <li class="nav-item dropdown">
-        <a class="nav-link mx-2 dropdown-toggle" href="#" id="subjDropDown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Subjects
-                        </a>
-                        <ul class="dropdown-menu" id="subjDropDown" aria-labelledby="subjDropDown">
-                        <li class="dropdown-item" id="primarymath">Maths</li>
-                        <li class="dropdown-item" id="primarychin" >Chinese</li>
-                        <li class="dropdown-item" id="primaryeng">English</li>
-                        <li class="dropdown-item" id="primarysci">Science</li>
-                        </ul>
-      </li>`
-      document.getElementById("primarymath").addEventListener ("click", function (){lookForTutor(1)}, {once: true})
-      document.getElementById("primarychin").addEventListener ("click", function(){lookForTutor(2)}, {once: true})
-      document.getElementById("primaryeng").addEventListener ("click", function(){lookForTutor(3)}, {once: true})
-      document.getElementById("primarysci").addEventListener ("click", function(){lookForTutor(4)}, {once: true})
-    }
-    else if (num == 2){
-      document.getElementById("subj-dropdown").innerHTML = `
-      <li class="nav-item dropdown">
-        <a class="nav-link mx-2 dropdown-toggle" href="#" id="subjDropDown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Subjects
-            </a>
-            <ul class="dropdown-menu" id="subjDropDown" aria-labelledby="subjDropDown">
-              <li class="dropdown-item" id="secamath" >A Math</li>
-              <li class="dropdown-item" id="secemath">E Math</li>
-              <li class="dropdown-item" id="secpoa">POA</li>
-              <li class="dropdown-item" id="secchin">Chinese</li>
-              <li class="dropdown-item" id="secchin2">Higher Chinese</li>
-              <li class="dropdown-item" id="seceng">English</li>
-              <li class="dropdown-item" id="seclit">Literature</li>
-              <li class="dropdown-item" id="secgeo">Geography</li>
-              <li class="dropdown-item" id="sechis">History</li>
-              <li class="dropdown-item" id="secphy">Physics</li>
-              <li class="dropdown-item" id="secbio">Biology</li>
-              <li class="dropdown-item" id="secchem">Chemistry</li>
-            </ul>
-      </li>`
-      document.getElementById("secamath").addEventListener ("click", function(){lookForTutor(5)}, {once: true})
-      document.getElementById("secemath").addEventListener ("click", function(){lookForTutor(6)}, {once: true})
-      document.getElementById("secpoa").addEventListener ("click", function(){lookForTutor(7)}, {once: true})
-      document.getElementById("secchin").addEventListener ("click", function(){lookForTutor(8)}, {once: true})
-      document.getElementById("secchin2").addEventListener ("click", function(){lookForTutor(9)}, {once: true})
-      document.getElementById("seceng").addEventListener ("click", function(){lookForTutor(10)}, {once: true})
-      document.getElementById("seclit").addEventListener ("click", function(){lookForTutor(11)}, {once: true})
-      document.getElementById("secgeo").addEventListener ("click", function(){lookForTutor(12)}, {once: true})
-      document.getElementById("sechis").addEventListener ("click", function(){lookForTutor(13)}, {once: true})
-      document.getElementById("secphy").addEventListener ("click", function(){lookForTutor(14)}, {once: true})
-      document.getElementById("secbio").addEventListener ("click", function(){lookForTutor(15)}, {once: true})
-      document.getElementById("secchem").addEventListener ("click", function(){lookForTutor(16)}, {once: true})
-    }
-    else {
-      document.getElementById("subj-dropdown").innerHTML = `
-      <li class="nav-item dropdown">
-        <a class="nav-link mx-2 dropdown-toggle" href="#" id="subjDropDown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Subjects
-                        </a>
-                        <ul class="dropdown-menu" id="subjDropDown" aria-labelledby="subjDropDown">
-                        <li class="dropdown-item" id="jmath">Math</li>
-                        <li class="dropdown-item" id="jchem">Chemistry</li>
-                        <li class="dropdown-item" id="jphy">Physics</li>
-                        <li class="dropdown-item" id="jbio">Biology</li>
-                        <li class="dropdown-item" id="jecon">Economics</li>
-                        <li class="dropdown-item" id="jlit">Literature</li>
-                        <li class="dropdown-item" id="jgp">General Paper</li>
-                        <li class="dropdown-item" id="jhis">History</li>
-                        <li class="dropdown-item" id="jgeo">Geography</li>
-                        </ul>
-      </li>`
-      document.getElementById("jmath").addEventListener ("click", function(){lookForTutor(17)}, {once: true})
-      document.getElementById("jchem").addEventListener ("click", function(){lookForTutor(18)}, {once: true})
-      document.getElementById("jphy").addEventListener ("click", function(){lookForTutor(19)}, {once: true})
-      document.getElementById("jbio").addEventListener ("click", function(){lookForTutor(20)}, {once: true})
-      document.getElementById("jecon").addEventListener ("click", function(){lookForTutor(21)}, {once: true})
-      document.getElementById("jlit").addEventListener ("click", function(){lookForTutor(22)}, {once: true})
-      document.getElementById("jgp").addEventListener ("click", function(){lookForTutor(23)}, {once: true})
-      document.getElementById("jhis").addEventListener ("click", function(){lookForTutor(24)}, {once: true})
-      document.getElementById("jgeo").addEventListener ("click", function(){lookForTutor(25)}, {once: true})
+            // Convert data to JSON and encode for URL
+            const dataEncoded = encodeURIComponent(JSON.stringify(data));
 
-    }
-  }
-  var subjDict = {
-    1: {"level": "Primary 6", "subject": "Math"},
-    2: {"level": "Primary 6", "subject": "Chinese"},
-    3: {"level": "Primary 6", "subject": "English"},
-    4: {"level": "Primary 6", "subject": "Science"},
+            // Create the URL with parameters
+            const profileURL = `profile.html?data=${dataEncoded}`;
 
-    5: {"level": "Secondary 4", "subject": "A Math"},
-    6: {"level": "Secondary 4", "subject": "E Math"},
-    7: {"level": "Secondary 4", "subject": "POA"},
-    8: {"level": "Secondary 4", "subject": "Chinese"},
-    9: {"level": "Secondary 4", "subject": "Higher Chinese"},
-    10: {"level": "Secondary 4", "subject": "English"},
-    11: {"level": "Secondary 4", "subject": "Literature"},
-    12: {"level": "Secondary 4", "subject": "Geography"},
-    13: {"level": "Secondary 4", "subject": "History"},
-    14: {"level": "Secondary 4", "subject": "Physics"},
-    15: {"level": "Secondary 4", "subject": "Biology"},
-    16: {"level": "Secondary 4", "subject": "Chemistry"},
-
-    17: {"level": "H2", "subject": "Math"},
-    18: {"level": "H2", "subject": "Chemistry"},
-    19: {"level": "H2", "subject": "Physics"},
-    20: {"level": "H2", "subject": "Biology"},
-    21: {"level": "H2", "subject": "Econs"},
-    22: {"level": "H2", "subject": "Literature"},
-    23: {"level": "H1", "subject": "General Paper"},
-    24: {"level": "H2", "subject": "History"},
-    25: {"level": "H2", "subject": "Geography"},
-    }
-
-// sorting function
-  function lookForTutor(num){
-    
-      var level = subjDict[num].level
-      var subject = subjDict[num].subject
-      var userInfo = JSON.parse(localStorage.getItem("userinfo"))
-      var studentLoc = userInfo["location"]
-      console.log(studentLoc)
-
-      getStudentLoc(studentLoc)
-      setTimeout(() =>{
-        getTopTutor(level,subject)
-      }, 200)
-    }
-
-
-  function getTopTutor(level, subject){
-
-    var allTutorData = JSON.parse(sessionStorage.getItem("allTutorData"))
-    var studentLoc = JSON.parse(sessionStorage.getItem("studentLoc"))
-    var searchTrue = []
-    allTutorData.forEach(element => {
-
-    if (element.level == level && element.subject == subject){
-        searchTrue.push(element)
-    }
-    })
-    searchTrue.sort((a, b) => (a.points > b.points) ? -1 : 1)
-
-    searchTrue.forEach(element => {
-      getTutorLoc(element.location)
-    });
-
-    setTimeout(() =>{
-      displayTopTutor(searchTrue, studentLoc)
-    }, 200)
-  }
-
-  function displayTopTutor(topTutor, studentLoc){
-    var tutorLoc = JSON.parse(sessionStorage.getItem("tutorLoc"))
-
-    topTutor.forEach(element => {
-        var tutorMrt = "singapore " + element.location + " mrt"
-        var tutorCoord = tutorLoc[tutorMrt]
-        // console.log(tutorCoord)
-        var dist = haversine_distance(studentLoc, tutorCoord)
-        // console.log(dist)
-        element.points -= dist/4
-      });
-      topTutor.sort((a, b) => (a.points > b.points) ? -1 : 1)
-
-      var display = `
-          <div class = "container-fluid mx-auto">
-                <div class = "row mx-auto">
-                    `
-      topTutor.forEach(element => {
-        var Pimg = element.img
-        var Pid = element.id
-        var Pname = element.name
-        var Pmrt = element.location
-        var Pprice = element.price
-        var Ptitle = element.level + " " + element.subject
-        var Psubject = element.subject
-        var Pscore = element.score
-        
-        display += `   <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 d-flex align-items-left" onclick="goProfilePage('${Pid}')">
-                        <img src="img/${Psubject}.jpg" alt="Avatar" class="img-display">
-                          <div class="row">
-                            <div class="col-4" style="padding-right:0px">
-                              <img src="${Pimg}" alt="img/person_icon.png" class="img-fluid img-thumbnail">
-                            </div>
-                            <div class="col-8 information py-2" style="padding-left:0px">
-                              <p style="font-weight: bold; margin: 0px;">${Ptitle}</p>
-                              <p style="margin: 0px;">S${Pprice} &nbsp&nbsp ${Pname}
-                              </p>
-                              <p style="font-size: 15px;" ><span class="fa-solid fa-location-dot" style="color: #f96666;"></span> 
-                              <span style="font-size: 15px; margin: 0px;">${Pmrt}</span> &nbsp&nbsp&nbsp&nbsp <i class="fa fa-star" style="color: #f96666;"></i>&nbsp${Pscore}</p>
-                              
-                            </div>
-                          </div>
-                          </div>`
-        });
-        display += "</div></div>"
-      document.getElementById("homepage-shown").innerHTML = display
-  }
-</script>
+            // Redirect to profile.html
+            window.location.href = profileURL;
+        }
+    </script>
 
 <!-- Weather API -->
 <script>
-  function getWeather() {
+    function getWeather() {
             var city = "singapore"
             var myapikey = "bdae21b6a0d1e797b8ab74bddc347609"  // TODO: add your API KEY here
             var url = "https://api.openweathermap.org/data/2.5/weather"
@@ -456,192 +516,36 @@
                 }); 
         }
 
-  function handleData(obj) {
-      var dt = obj.dt
+function handleData(obj) {
+    var dt = obj.dt
       // var milisec = new Date().getTime()
       // var dt = Math.floor(milisec/1000)
 
-      var sunrise = obj.sys.sunrise
-      var sunriseMin = sunrise - 1800
-      var sunriseMax = sunrise + 1800
+    var sunrise = obj.sys.sunrise
+    var sunriseMin = sunrise - 1800
+    var sunriseMax = sunrise + 1800
 
-      var sunset = obj.sys.sunset
-      var sunsetMin = sunset - 1800
-      var sunsetMax = sunset + 1800
-      var date = new Date(dt*1000)
-      var dateTime = date.toTimeString()
-      var time = dateTime.split(" ")[0]
-      var hour = Number(time.split(":")[0])
+    var sunset = obj.sys.sunset
+    var sunsetMin = sunset - 1800
+    var sunsetMax = sunset + 1800
+    var date = new Date(dt*1000)
+    var dateTime = date.toTimeString()
+    var time = dateTime.split(" ")[0]
+    var hour = Number(time.split(":")[0])
 
-      if (hour >= 0 && hour <= 11){
+    if (hour >= 0 && hour <= 11){
         document.getElementById("greeting").src = "img/Good Morning.mp4"
-      } 
-      else if (hour >= 12 && hour <= 17){
+    } 
+    else if (hour >= 12 && hour <= 17){
         document.getElementById("greeting").src = "img/Good Afternoon.mp4"
-      } 
-      else if (hour >= 18 && hour <= 24){
+    } 
+    else if (hour >= 18 && hour <= 24){
         document.getElementById("greeting").src = "img/Good Evening.mp4"
-      } 
-      
-  }
-
-</script>
-
-<!-- Firebase -->
-<script type="module">
-
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-  apiKey: "AIzaSyDc714DoZoHSdClJoOi3K95Ho-4nPH4fZY",
-  authDomain: "tutizen-c8f64.firebaseapp.com",
-  projectId: "tutizen-c8f64",
-  storageBucket: "tutizen-c8f64.appspot.com",
-  messagingSenderId: "210404368356",
-  appId: "1:210404368356:web:c8d68acf2541de5ab9b1f1",
-  databaseURL: "https://tutizen-c8f64-default-rtdb.asia-southeast1.firebasedatabase.app/"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-
-  /* CODE ADDED: START */
-  // Import the functions needed to read from realtime database
-  import { getDatabase, ref, onValue, child, remove } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js";
-  // connect to the realtime database and authentication
-  const db = getDatabase();
-  const auth = getAuth();
-
-  //Logout
-  var log_out = document.getElementById("logout");
-    const logout = () => {
-        sessionStorage.clear()
-        localStorage.clear()
-        signOut(auth).then(() => {
-            // Sign-out successful.
-            window.location.href = "index.html";
-        }).catch((error) => {
-            // An error happened.
-        });
-    }
-    log_out.addEventListener("click", logout);
-
-  // get a reference to the data
-  const tutors = ref(db, 'tutor');
-  var arr = []
-
-  onValue(tutors, (snapshot) => {
-  sessionStorage.clear()
-  const data = snapshot.val();
-  console.log(data)
-
-//Adding tutor info into arr
-  Object.keys(data).forEach(tutor => {
-    var person = data[tutor]
-    var info = person.info
-    var img = info.img
-    var name = info.name
-    var mrt = info.mrt
-    var price = "$" + info.price + "/hr"
-
-//Adding reviews to arr
-    var allReview = person.review
-    var num = Object.keys(allReview).length
-    var total = 0
-    var avg = 0
-    if (allReview['0'] != ""){
-    Object.keys(allReview).forEach(reviewIndex => {
-      var reviewObj = allReview[reviewIndex]
-      total += Number(reviewObj.score)
-    });
-    avg = Math.round((total/num) * 10)/10}
-
-    else if (allReview[0] == "" && num > 1){
-      var reviewPath = ref(db, "tutor/" +tutor+"/review/0")
-      remove(reviewPath)
-    }
-
-
-// Adding subject to array
-    var subjectObj = person.subject
-    Object.keys(subjectObj).forEach(school => {
-        var schooling = ""
-        if (school == "Tertiary"){
-            schooling = "Junior College"
-        }
-        else schooling = school
-        
-        var level = subjectObj[school]
-
-        Object.keys(level).forEach(subject =>{
-          var tutorsubjectObj = {}
-          tutorsubjectObj["id"] = tutor
-          tutorsubjectObj["img"] = img
-          tutorsubjectObj["name"] = name
-          tutorsubjectObj["location"] = mrt
-          tutorsubjectObj["price"] = price
-          tutorsubjectObj["level"] = level[subject]
-          tutorsubjectObj["subject"] = subject
-          tutorsubjectObj["score"] = avg
-          tutorsubjectObj['points'] = avg
-          arr.push(tutorsubjectObj)
-          
-            
-        }) 
-        
-            
-    })
-  })
-  sessionStorage.setItem("allTutorData", JSON.stringify(arr)) 
-  var display = `
-        <div class = "container-fluid">
-              <div class = "row">
-                  `
-    while (arr.length > 0){ 
-    var max = arr.length-1;  
-    var randomIndex = Math.random()*(max)
-    randomIndex = Math.floor(randomIndex)
+    } 
     
-    var Pimg = arr[randomIndex].img
-    var Pid = arr[randomIndex].id
-    var Pname = arr[randomIndex].name
-    var Pmrt = arr[randomIndex].location
-    var Pprice = arr[randomIndex].price
-    var Ptitle = arr[randomIndex].level + " " + arr[randomIndex].subject
-    var Pscore = arr[randomIndex].score
-    var Psubject = arr[randomIndex].subject
-
-    display += `   <div class="card col-xl-4 col-lg-6 col-md-12 col-sm-12 p-1 mx-auto" onclick="goProfilePage('${Pid}')">
-                    <img src="img/${Psubject}.jpg" alt="Avatar" class="img-display">
-                      <div class="row">
-                        <div class="col-4" style="padding-right:0px">
-                          <img src="${Pimg}" alt="Generic placeholder image" class="img-fluid img-thumbnail">
-                        </div>
-                        <div class="col-8 information py-2" style="padding-left:0px">
-                          <p style="font-weight: bold; margin: 0px;">${Ptitle}</p>
-                          <p style="margin: 0px;">S${Pprice} &nbsp&nbsp ${Pname}
-                          </p>
-                          <p style="font-size: 15px;" ><span class="fa-solid fa-location-dot" style="color: #f96666;"></span> 
-                          <span style="font-size: 15px; margin: 0px;">${Pmrt}</span> &nbsp&nbsp&nbsp&nbsp <i class="fa fa-star" style="color: #f96666;"></i>&nbsp${Pscore}</p>
-                          
-                        </div>
-                      </div>
-                      </div>`
-    arr.splice(randomIndex,1)
-  }
-  display += "</div></div>"
-  document.getElementById("homepage-shown").innerHTML = display
-  })
-
+}
 
 </script>
-  
-  
 
                     
 </body>
