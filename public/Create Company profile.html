@@ -188,9 +188,9 @@
       padding: 10px;
     }
 
-    .has-bg {
+    /* .has-bg {
       background-image: url("img/Background.png");
-    }
+    } */
 
     .card {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -246,17 +246,17 @@
         <div class="card-body">
           <div class="row">
             <div class="col">
-              <h1 style="text-align: center;">Create Tutor Account</h1>
+              <h1 style="text-align: center;">Create Company Account</h1>
             </div>
           </div>
           <hr>
           <div class="row">
             <div class="col-sm-3">
-              <p class="mb-0"><span style="color:red">* </span>Full Name</p><span id="namemessage" style="color:red"> </span>
+              <p class="mb-0"><span style="color:red">* </span>Company Name</p><span id="namemessage" style="color:red"> </span>
             </div>
             <div class="col-sm-9">
               <input id="name" type="text" class="form-control"
-                placeholder="Full name (as per NRIC/Passport) ">
+                placeholder="Company name as per registeredd ">
             </div>
           </div>
           <hr>
@@ -265,7 +265,7 @@
               <p class="mb-0"><span style="color:red">* </span>Email</p><span id="emailmessage" style="color:red"> </span>
             </div>
             <div class="col-sm-9">
-              <input id="email" type="text" class="form-control" placeholder="Email">
+              <input id="email" type="text" class="form-control" placeholder="Company email">
             </div>
           </div>
           <hr>
@@ -282,145 +282,13 @@
           <hr>
           <div class="row">
             <div class="col-sm-3">
-              <p class="mb-0"><span style="color:red">* </span>Price</p><span id="mobilemessage" style="color:red"> </span>
+              <p class="mb-0"><span style="color:red">* </span>Company description</p><span id="mobilemessage" style="color:red"> </span>
             </div>
             <div class="col-sm-9">
               <input type="number" class="form-control" id="price"
-                placeholder="Price of your service for the lowest level you teach">
+                placeholder="Tell us more about your company">
             </div>
           </div>
-          <hr>
-          <div class="row">
-            <div class="col-sm-3">
-              <p class="mb-0">Increment</p><span id="mobilemessage" style="color:red"> </span>
-            </div>
-            <div class="col-sm-9">
-              <input type="number" class="form-control" id="increment"
-                placeholder="Price increment for each level you teach">
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-sm-3">
-              <p class="mb-0"><span style="color:red">* </span>Closest MRT Line</p>
-            </div>
-            <div class="col-sm-9">
-              <select class="form-select" v-model="area" id="line" placeholder="Select your closest MRT line...">
-                <option disabled selected hidden>Select</option>
-                <option v-for="area in areas">{{area}}</option>
-              </select>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-sm-3">
-              <p class="mb-0"><span style="color:red">* </span>Closest MRT Station</p>
-            </div>
-            <div class="col-sm-9">
-              <select class="form-select" id="station">
-                <option disabled selected hidden>Select</option>
-                <option v-for="station in northsouth" v-if="area=='North South'">{{station}}</option>
-                <option v-for="station in northeast" v-if="area=='North East'">{{station}}</option>
-                <option v-for="station in circle" v-if="area=='Circle'">{{station}}</option>
-                <option v-for="station in downtown" v-if="area=='Downtown'">{{station}}</option>
-                <option v-for="station in eastwest" v-if="area=='East West'">{{station}}</option>
-                <option v-for="station in thomsoneast" v-if="area=='Thomson Eastcoast'">{{station}}</option>
-              </select>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-sm-3">
-              <p class="mb-0">Offerings</p>
-            </div>
-            <div class="col-sm-9">
-              <div class="dropdown">
-                <p>
-                  <button class="btn btn-outline-dark col col-lg-3 col-sm-12 mx-3" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#offerings" aria-expanded="false"
-                    aria-controls="multiCollapseExample1">Offerings</button>
-                </p>
-                <div class="row">
-                  <div class="col">
-                    <div class="collapse multi-collapse" id="offerings">
-                      <br>
-                      <div class="card card-body ">
-                        
-                        <div>
-
-                          <span v-for="offering in offerings"><input type="checkbox" class="offerings"
-                              v-bind:value="offering">
-                            {{offering}}<br></span>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-sm-3">
-              <p class="mb-0">Subjects</p>
-            </div>
-            <div class="col-sm-9">
-              <div class="dropdown">
-                <p>
-                  <button class="btn btn-outline-dark col col-lg-3 col-sm-12 mx-3" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#primary" aria-expanded="false"
-                    aria-controls="multiCollapseExample1">Primary</button>
-                  <button class="btn btn-outline-dark col col-lg-3 col-sm-12 mx-3" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#secondary" aria-expanded="false"
-                    aria-controls="multiCollapseExample2">Secondary</button>
-                  <button class="btn btn-outline-dark col col-lg-3 col-sm-12 mx-3" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#juniorcollege" aria-expanded="false"
-                    aria-controls="multiCollapseExample3">Junior College</button>
-                </p>
-                <div class="row">
-                  <div class="col">
-                    <div class="collapse multi-collapse" id="primary">
-                      <br>
-                      <div class="card card-body ">
-                        <div>
-                            <li v-for="subject in pri_subjects" style="list-style: none;"><input type="checkbox" class="lvlPri"
-                                v-bind:value="subject">
-                              {{subject}}</li>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="collapse multi-collapse" id="secondary">
-                      <br>
-                      <div class="card card-body">
-                        <div>
-                            <li v-for="subject in sec_subjects" style="list-style: none;"><input type="checkbox" class="lvlSec"
-                                v-bind:value="subject">
-                              {{subject}}</li>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="collapse multi-collapse" id="juniorcollege">
-                      <br>
-                      <div class="card card-body">
-                        <div>
-                            <li v-for="subject in jc_subjects" style="list-style: none;"><input type="checkbox" class="lvlJC"
-                                v-bind:value="subject">
-                              {{subject}}</li>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
           <hr>
           <button type="submit" class="btn btn-outline-dark mx-1" id="create">Sign Up</button>
           <button type="submit" class="btn btn-outline-dark mx-1" id="cancel">Cancel</button>
@@ -467,28 +335,6 @@
           junior: ["JC1", "JC2"],
           area: "",
           levels: [],
-          offerings: ["Topical worksheet",
-            "Concise notes",
-            "Personalised exam work schedule",
-            "Study tips",
-            "Self-prepared exam papers",
-            "Personalised feedback",
-            "Responsive text",
-            "Flexible tuition timings",
-            "Review of past year papers",
-            "Personal answers to TYS",
-            "Easy to contact",
-            "Crash course before exam",
-            "Personal 1-1 tuition",
-            "Small group tuition",
-            "Affordable rates",
-            "Home-based tuition"],
-          pri_subjects: ['English', 'Math', 'Science', 'Chinese'],
-          sec_subjects: ['English', 'E Math',  'A Math','Chinese', 'Physics', 'Chemistry', 'Biology', 'Geography',
-            'Literature', 'Social Studies', 'History', 'POA', 'Higher Chinese'],
-          jc_level: ['H1', 'H2', 'H3'],
-          jc_subjects: ['General Paper', 'Math', 'Chinese', 'Physics', 'Chemistry', 'Biology', 'Geography',
-            'Literature', 'Social Studies', 'History', 'Econs']
 
         }
       },

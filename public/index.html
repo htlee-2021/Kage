@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- icon -->
+   <link rel="icon" href="style/favicon.ico">
+
+      <!-- external style sheet -->
+    <link href='../public/style/style.css' rel='stylesheet'>
+
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/a5bb4f9226.js" crossorigin="anonymous"></script>
+    <title>Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js";
+    import { getAuth, onAuthStateChanged, setPersistence, inMemoryPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js";
+    import { FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js";
+    import { signInWithRedirect } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js";
+    import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js";
+    import { signInWithPopup, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js";
+    import { getDatabase, ref, onValue, get, child, set, update } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    //https://firebase.google.com/docs/auth/web/start need to check this website for database login
+    const firebaseConfig = {
+        apiKey: "AIzaSyDc714DoZoHSdClJoOi3K95Ho-4nPH4fZY",
+        authDomain: "tutizen-c8f64.firebaseapp.com",
+        databaseURL: "https://tutizen-c8f64-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "tutizen-c8f64",
+        storageBucket: "tutizen-c8f64.appspot.com",
+        messagingSenderId: "210404368356",
+        appId: "1:210404368356:web:c8d68acf2541de5ab9b1f1"
+    };
+
+    // Initialize Firebase
+    // const auth = getAuth(app);
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+    // const sendError = document.getElementById('error');
+
+    //Email
+    const signinplease = document.getElementById("signinemail");
+    function logmein() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        // User is signed in, see docs for a list of available properties
+                        // https://firebase.google.com/docs/reference/js/firebase.User
+                        const uid = user.uid;
+                        const dbRef = ref(getDatabase());
+                        get(child(dbRef, `users/${uid}/info`)).then((snapshot) => {
+                            if (snapshot.exists()) {
+                                console.log(snapshot.val());
+                                var name = snapshot.child("fullname").val()
+                                var email = snapshot.child("email").val()
+                                var mobile = snapshot.child("mobile").val()
+                                var mrt = snapshot.child("mrtstation").val()
+                                var line = snapshot.child("line").val()
+                                var level = snapshot.child("level").val()
+                                var userinfo = { "uid": uid, "name": name, "location": mrt, "level": level, "line": line }
+                                localStorage.setItem("userinfo", JSON.stringify(userinfo))
+                                window.location = "Homepage.html";
+
+                            } else {
+                                get(child(dbRef, `tutor/${uid}`)).then((snapshot) => {
+                                    if (snapshot.exists()) {
+                                        console.log(snapshot.val());
+                                        var name = snapshot.child("fullname").val()
+                                        var mrt = snapshot.child("mrtstation").val()
+                                        var tutorinfo = { "uid": uid, "name": name, "location": mrt }
+                                        localStorage.setItem("tutorinfo", JSON.stringify(tutorinfo))
+                                        window.location = "Homepage.html";
+
+                                    } else {
+
+                                        console.log("No data available");
+                                    }
+                                }).catch((error) => {
+                                    console.error(error);
+                                });
+
+                            }
+                        }).catch((error) => {
+                            console.error(error);
+                        });
+
+
+                        // ...
+                    } else {
+                        // User is signed out
+                        console.log("error")
+                        // ...
+                    }
+                });
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert("Incorrect email or password")
+            });
+    }
+
+
+
+    signinplease.addEventListener('click', logmein);
+
+    //facebook
+    const signinwithfb = document.getElementById("signinfb");
+    const fbprovider = new FacebookAuthProvider();
+    const signinfb = () => {
+        signInWithPopup(auth, fbprovider)
+            .then((result) => {
+                // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+                const user = result.user;
+                const credential = FacebookAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                console.log(user)
+                const email = user.email;
+                const name = user.displayName;
+                const uid = user.uid;
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        // auth.setPersistence("local")
+                        var userinfo = { "name": name, "email": email, "uid": uid }
+                        localStorage.setItem("userinfo", JSON.stringify(userinfo))
+                        window.location = 'Edit_Profile.html'; //After successful login, user will be redirected to home.html
+                    }
+                }
+                )
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // AuthCredential type that was used.
+                const credential = FacebookAuthProvider.credentialFromError(error);
+                // ...
+            })
+    }
+    signinwithfb.addEventListener('click', signinfb);
+
+    //google
+    setPersistence(auth, inMemoryPersistence)
+    const signinwithgoogle = document.getElementById("signingoogle");
+    const provider = new GoogleAuthProvider();
+
+    const signinGoogle = () => {
+        signInWithPopup(auth, provider)
+
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                console.log(result)
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                console.log(user)
+                const email = user.email;
+                const name = user.displayName;
+                const uid = user.uid;
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        var userinfo = { "name": name, "email": email, "uid": uid }
+                        localStorage.setItem("userinfo", JSON.stringify(userinfo))
+                        window.location = 'Edit_Profile.html'; //After successful login, user will be redirected to home.html
+                    }
+                }
+                )
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+            })
+
+    }
+    signinwithgoogle.addEventListener('click', signinGoogle);
+
+</script>
+<style>
+    .divider:after,
+    .divider:before {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #eee;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 30px;
+        padding: 30px;
+    }
+
+    .form-control,
+    .form-select {
+        border-radius: 30px;
+
+    }
+
+    hr {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .btn {
+        border-radius: 20px;
+        padding: 5px 15px;
+        min-width: 100px;
+        text-align: center;
+        margin: 0px;
+        color: white;
+        background-color: #6c757d; 
+        border:  #6c757d;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+        background-color: #fa7979;
+        border-color: #fa7979;
+        color:#fff;
+    }
+
+    .btn:active {
+        background-color: #fa7979;
+        border-color: #fa7979;
+    }
+
+    p {
+        margin: 0px;
+    }
+
+    .bg_img {
+        height: 120px;
+        width: 100%;
+        padding: 10px;
+    }
+
+    @media screen and (max-width: 1200px) {
+        #lottie {
+            display: none;
+        }
+    }
+</style>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<body>
+    <div class="container-fluid">
+        <section class="vh-100">
+            <div class="container py-5 h-100">
+
+                <div class="row d-flex align-items-center justify-content-center h-100 ">
+                    <div class="col-md-12 col-lg-7 col-xl-6 text-center">
+                        <lottie-player src="https://assets9.lottiefiles.com/private_files/lf30_TBKozE.json"
+                            background="transparent" speed="1" style="width: 90%; height: 90%;" loop autoplay
+                            media="screen" id="lottie"></lottie-player>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-xl-5 offset-xl-1 text-center">
+
+                        <img src="style\logo\kage.png" class="img-fluid mx-auto my-3" style="width:300px"
+                            alt="Phone image">
+
+                        <form>
+                            <!-- Email input -->
+                            <div class="form-outline mb-5">
+                                <input type="email" id="email" class="form-control form-control-lg"
+                                    placeholder="Email" />
+                                <label class="form-label" for="form1Example13"
+                                    style="float: left; margin-left: 9px;">Email address</label>
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-5" style="margin-top: 10px ;">
+                                <input type="password" id="password" class="form-control form-control-lg"
+                                    placeholder="Password" />
+                                <label class="form-label" for="form1Example23"
+                                    style="float: left; margin-left: 9px;">Password</label>
+                            </div>
+                            <!-- <span style="color:red" id="error"></span> -->
+
+                            <div class="d-flex justify-content-around align-items-center mb-4">
+                                <!-- Checkbox -->
+
+                            </div>
+
+                            <!-- Submit button -->
+                            <div class ="container-fluid">
+                                <div class="row">
+                                    <div class="col-2 p-0">
+                                        <a class="btn btn-lg btn-block float-md-start" id="signinemail">Sign in</a>
+                                    </div>
+                                    <div class="col-2">
+                                        <a class="btn btn-lg btn-block mx-3" href="Create Applicant Profile.html">Sign
+                                            up</a>
+                                    </div>
+                                    <div class="col-4">
+
+                                    </div>
+                                    <div class ="col-4">
+                                        <a style="color:black;" href="Create Company profile.html" >Become a Hirer</a>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                            
+
+                            <div class="divider d-flex align-items-center my-4">
+                                <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+                            </div>
+                            <div class="d-grid gap-2 col mx-auto">
+                                <a class="btn btn-primary btn-lg btn-block" id="signinfb"
+                                    style="background-color: #3b5998; border-color:#3b5998; box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); margin-bottom:10px;" href="#!" role="button">
+                                    <i class="fab fa-facebook-f me-2"></i>Login with Facebook
+                                </a>
+                                <a class="btn btn-primary btn-lg btn-block" id="signingoogle"
+                                    style="background-color: #fff; border:1px solid; border-color: lightgray; color:black; box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);" href="#!" role="button">
+                                    <i class="fab fa-google me-2"></i>Login with Google</a>
+                            </div>
+
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="row sticky-bottom bg-white" style="font-size: small">
+            <div class="col p-3">
+              <i class="fa-regular fa-copyright"></i>
+              2022, Tutizen,Inc.
+              <span style="padding-left:20px;">&#8226;</span>
+              <a href="about.html" class="aboutus" style="color: black;">About Us</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

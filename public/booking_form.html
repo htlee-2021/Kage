@@ -102,9 +102,9 @@
          margin: 0px;
       }
 
-      .has-bg {
+      /* .has-bg {
          background-image: url("img/Background.png");
-      }
+      } */
    </style>
    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
    <script>
@@ -266,19 +266,6 @@
             <select v-model="level" id="level" class="form-select" id="level">
                <option v-for="level in levels">{{level}}</option>
             </select>
-            Subject:
-            <select name="subjects" id="subject" class="form-select">
-               <option v-for="value in primarysub" v-if="level=='Primary School'">{{value}}</option>
-               <option v-for="value in secondarysub" v-if="level=='Secondary School'">{{value}}</option>
-               <option v-for="value in jcsub" v-if="level=='Tertiary'">{{value}}</option>
-            </select>
-            Price:
-            <select name="prices" id="price" class="form-select">
-               <option v-if="level=='Primary School'">{{primaryprice}}</option>
-               <option v-if="level=='Secondary School'">{{secondaryprice}}</option>
-               <option v-if="level=='Tertiary'">{{jcprice}}</option>
-            </select>
-            
 
          </div>
 
