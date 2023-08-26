@@ -167,13 +167,13 @@
 
 
       const submit_booking = () => {
-         const subjectt = document.getElementById("subject").value
+         // const subjectt = document.getElementById("subject").value
          var level = document.getElementById("level").value
          var time = document.getElementById("time").value
          const date = document.getElementById("date").value
          const duration = document.getElementById("duration").value
          const location = document.getElementById("location").value
-         const price = document.getElementById("price").value
+         // const price = document.getElementById("price").value
          const updates = {};
          function tConvert(timee) {
             // Check correct time format and split into components
@@ -202,7 +202,7 @@
             "tutorimg": tutorimg,
             "score": "",
             "date": date,
-            "subject": subjectt,
+            // "subject": subjectt,
             "text": "",
             "tutorid": id,
 
@@ -213,7 +213,7 @@
          {
             "tutor": tutorname,
             "level": level,
-            "subject": subjectt,
+            // "subject": subjectt,
             "date": date,
             "time": tConvert(time),
             "duration": duration,
@@ -231,8 +231,8 @@
             "tutorimg": tutorimg,
             "payment_status": "incomplete",
             "date": date,
-            "subject": subjectt,
-            "price": price,
+            // "subject": subjectt,
+            // "price": price,
             "tutorid": id,
          }
 
