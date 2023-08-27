@@ -1,10 +1,10 @@
 # Kage
 
-What is Kage
+**What is Kage**
 Kage is a portal for companies to sign up and list available jobs or roles for youths to apply and shadow in.
 Through this job shadowing, youths are able to discern what jobs they would like to pursue in the future and what skills they would require to excel in those jobs 
 
-How To Use
+**How To Use**
 Simply use our link: https://kage-40d39.web.app/
 Or if you want to host it on your local machine, go into public folder and start from index.html
 1)Continue as Guest or Log in
@@ -18,7 +18,7 @@ Our website is coded out using HTML, CSS, Bootstrap, Javascript and VueJS
 We made use of weather and google maps API
 We deployed our website on firebase
 
-Disclaimer:
+**Disclaimer:**
 Originally, our website were to implement these features:
 - Filtering by industry, interest, duration
 - Students to create and edit their profile, including some personal information (picture, level of education, interest)
