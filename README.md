@@ -2,6 +2,7 @@
 
 What is Kage
 Kage is a portal for companies to sign up and list available jobs or roles for youths to apply and shadow in.
+Through this job shadowing, youths are able to discern what jobs they would like to pursue in the future and what skills they would require to excel in those jobs 
 
 How To Use
 Simply use our link: https://kage-40d39.web.app/
