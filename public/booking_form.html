@@ -111,147 +111,14 @@
       function successful(ID) {
          display = `<lottie-player src="https://assets9.lottiefiles.com/packages/lf20_4qldwfx4.json"  
          background="transparent"  speed="2"  style="width: 120px; height: 120px; object-fit: cover;
-         margin-top: -70%;"  loop  autoplay></lottie-player>`
+         margin-top: -70%;"  autoplay></lottie-player>`
          document.getElementById(ID).innerHTML = display;
 
-         return true
+         // Delay the redirection by 2 seconds
+         setTimeout(() => {
+            window.location.href = 'Homepage.html';
+         }, 1500); // 2000 milliseconds = 2 seconds
       }
-   </script>
-   <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
-      import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js";
-      import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-auth.js";
-      import { getDatabase, ref, set, child, push, update } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
-
-      // Initialize Firebase
-      const firebaseConfig = {
-         apiKey: "AIzaSyDc714DoZoHSdClJoOi3K95Ho-4nPH4fZY",
-         authDomain: "tutizen-c8f64.firebaseapp.com",
-         databaseURL: "https://tutizen-c8f64-default-rtdb.asia-southeast1.firebasedatabase.app",
-         projectId: "tutizen-c8f64",
-         storageBucket: "tutizen-c8f64.appspot.com",
-         messagingSenderId: "210404368356",
-         appId: "1:210404368356:web:c8d68acf2541de5ab9b1f1"
-      };
-      const appp = initializeApp(firebaseConfig);
-      // Initialize Firebase Authentication and get a reference to the service
-      const analytics = getAnalytics(appp);
-      const auth = getAuth();
-      const database = getDatabase();
-      const user = auth.currentUser;
-      const tutorinfor = JSON.parse(localStorage.getItem('tutorInfo'))
-      const usersession = JSON.parse(localStorage.getItem('userinfo'))
-      const id = tutorinfor.id;
-      console.log(id)
-      const tutorname = tutorinfor.name
-      const tutorimg = tutorinfor.img
-      console.log(tutorinfor)
-      if (usersession !== null) {
-         console.log("success")
-      } else {
-         alert("Only for registered students");
-         window.location.href = "Homepage.html"
-      }
-
-      // console.log(usersession)
-
-      const education = usersession.level;
-      const uid = usersession.uid;
-      const name = usersession.name;
-      // console.log(education)
-
-      const book = document.getElementById("submit")
-      // console.log(uid)
-
-
-
-      const submit_booking = () => {
-
-         var level = document.getElementById("level").value
-         var time = document.getElementById("time").value
-         const date = document.getElementById("date").value
-
-         const location = document.getElementById("location").value
-
-         const updates = {};
-         function tConvert(timee) {
-            // Check correct time format and split into components
-            timee = timee.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
-
-            if (timee.length > 1) { // If time format correct
-               timee = timee.slice(1);  // Remove full string match value
-               timee[5] = +timee[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
-               timee[0] = +timee[0] % 12 || 12; // Adjust hours
-            }
-            return timee.join(''); // return adjusted time or original string
-         }
-
-         console.log(time)
-         console.log(date)
-
-         const db = getDatabase();
-         var randomid = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-         console.log(randomid)
-         const reviewData =
-
-         {
-            "level": level,
-            "name": name,
-            "tutor": tutorname,
-            "tutorimg": tutorimg,
-            "score": "",
-            "date": date,
-            // "subject": subjectt,
-            "text": "",
-            "tutorid": id,
-
-         }
-            ;
-         const bookingData =
-
-         {
-            "tutor": tutorname,
-            "level": level,
-            // "subject": subjectt,
-            "date": date,
-            "time": tConvert(time),
-
-            "uid": uid,
-            "img": tutorimg,
-            "location": location,
-         }
-
-         const paymentData =
-
-         {
-            "level": education,
-            "name": name,
-            "tutor": tutorname,
-            "tutorimg": tutorimg,
-            "payment_status": "incomplete",
-            "date": date,
-            // "subject": subjectt,
-            // "price": price,
-            "tutorid": id,
-         }
-
-
-         updates['/users/' + uid + "/reviews/incomplete/" + randomid] = reviewData;
-         updates['/users/' + uid + "/bookings/" + randomid] = bookingData;
-         updates['/users/' + uid + "/payments/incomplete/" + randomid] = paymentData;
-         localStorage.setItem("bookingData", JSON.stringify(bookingData))
-         update(ref(db), updates)
-         successful("imgChange")
-
-         if (successful("imgChange")) {
-            setTimeout(() => {
-               window.location = 'bookingpage.html'; //After successful login, user will be redirected to home.html
-            }, 1000)
-         }
-
-      }
-      book.addEventListener('click', submit_booking);
    </script>
 </head>
 
@@ -262,10 +129,6 @@
             <img src="img/calendar.png" class="img-thumbnail">
          </div>
          <div>
-            Level:
-            <select v-model="level" id="level" class="form-select" id="level">
-               <option v-for="level in levels">{{level}}</option>
-            </select>
 
          </div>
 
@@ -274,97 +137,15 @@
             <input type="date" class="form-control" id="date">
             Time:<br>
             <input type="time" class="form-control" id="time">
-            Location:<br>
-            <input type="text" id="location" style="margin-bottom:7px">
             
          </div>
 
 
 
-         <button id="submit">Confirm</button>
+         <button id="submit" onclick="successful('imgChange')">Confirm</button>
       </div>
    </div>
 </body>
 <script src="https://unpkg.com/vue@next"></script>
-<script>
-   const tutorinfoo = JSON.parse(localStorage.getItem('tutorInfo'))
-   const mrtstop = tutorinfoo.location
-   const subject_chosen = tutorinfoo.subject
-   const subject_chose = ""
-   var pri_subject = ""
-   var sec_subject = ""
-   var jc_subject = ""
-   const price_chosen = tutorinfoo.price
-   var pri_price = ""
-   var sec_price = ""
-   var jc_price = ""
-
-
-   document.getElementById("location").defaultValue = mrtstop
-   // console.log(tutorinfoo)
-   const length = Object.keys(subject_chosen).length
-   const lvl = Object.keys(subject_chosen)
-   const levels = []
-   for (var i = 0; i < length; i++) {
-      if (lvl[i] == "Primary School") {
-         pri_subject = Object.keys(subject_chosen["Primary School"])
-         levels.push("Primary School")
-      }
-      if (lvl[i] == "Secondary School") {
-         sec_subject = Object.keys(subject_chosen["Secondary School"])
-         levels.push("Secondary School")
-      }
-      if (lvl[i] == "Tertiary") {
-         jc_subject = Object.keys(subject_chosen["Tertiary"])
-         levels.push("Tertiary")
-      }
-   }
-   const price_length = Object.keys(price_chosen).length
-   const price_lvl = Object.keys(price_chosen)
-   for (var i = 0; i < length; i++) {
-      if (price_lvl[i] == "Primary School") {
-         pri_price = price_chosen["Primary School"]
-      }
-      if (price_lvl[i] == "Secondary School") {
-         sec_price = price_chosen["Secondary School"]
-      }
-      if (price_lvl[i] == "Tertiary") {
-         jc_price = price_chosen["Tertiary"]
-      }
-   }
-
-
-
-
-   console.log(sec_subject)
-
-   const app = Vue.createApp(
-      {
-         //options object
-         data() {
-            return {
-               levels: levels,
-               primarysub: pri_subject,
-               secondarysub: sec_subject,
-               jcsub: jc_subject,
-               level: "",
-               primaryprice: pri_price,
-               secondaryprice: sec_price,
-               jcprice: jc_price
-
-            }
-         },
-         methods: {
-            getstatus() {
-               console.log(this.level)
-            }
-
-         },
-      }
-   )
-   // console.log(subject_chose)
-   const mount = app.mount("#app")
-
-</script>
 
 </html>
